@@ -13,7 +13,7 @@ class PokemonRepositoryImpl(private val service: PokemonService): PokemonReposit
     override suspend fun fetchPokemon(): Pokemon? {
         var result: Pokemon? = null
         withContext(Dispatchers.IO){
-            result = service.getPokemons("1")
+            result = service.getPokemons("25")
         }
         return result
     }
