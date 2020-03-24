@@ -11,7 +11,7 @@ import com.apollographql.apollo.GraphQLCall
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.exception.ApolloException
 import org.koin.android.ext.android.inject
-import tej.mann.pokemon.PokemonFragment
+import tej.mann.login.LoginFragment
 import type.CreatePokeMasterInput
 
 
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if(savedInstanceState == null){
             Log.d("_CALLED_","create_view_activity")
-            supportFragmentManager.beginTransaction().add(R.id.container, PokemonFragment(),"").commit()
+            supportFragmentManager.beginTransaction().add(R.id.container, LoginFragment(),"").commit()
         }
         runMutation()
         runQuery()
