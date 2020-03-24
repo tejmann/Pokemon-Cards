@@ -7,5 +7,6 @@ val BASE_URL = "https://pokeapi.co/api/v2/"
 
 val appComponent = listOf(
     createNetworkModule(BASE_URL),
-    viewModelModule
+    viewModelModule,
+    mainModule
 )

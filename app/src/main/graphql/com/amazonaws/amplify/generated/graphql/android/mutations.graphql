@@ -1,0 +1,34 @@
+# this is an auto generated file. This will be overwritten
+mutation CreatePokeMaster(
+  $input: CreatePokeMasterInput!
+  $condition: ModelPokeMasterConditionInput
+) {
+  createPokeMaster(input: $input, condition: $condition) {
+    id
+    name
+    description
+    score
+  }
+}
+mutation UpdatePokeMaster(
+  $input: UpdatePokeMasterInput!
+  $condition: ModelPokeMasterConditionInput
+) {
+  updatePokeMaster(input: $input, condition: $condition) {
+    id
+    name
+    description
+    score
+  }
+}
+mutation DeletePokeMaster(
+  $input: DeletePokeMasterInput!
+  $condition: ModelPokeMasterConditionInput
+) {
+  deletePokeMaster(input: $input, condition: $condition) {
+    id
+    name
+    description
+    score
+  }
+}
