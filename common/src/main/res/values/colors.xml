@@ -14,5 +14,8 @@
     <color name="fire">#ED4009</color>
     <color name="water">#089EE1</color>
     <color name="grass">#019007</color>
+    <color name="yellow">#FFCB05</color>
+    <color name="blue">#3D7DCA</color>
+    <color name="navy_blue">#003A70</color>
 
 </resources>

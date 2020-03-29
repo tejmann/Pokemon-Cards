@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    android:paddingHorizontal="16dp">
+
+    <ImageView
+        android:id="@+id/signup_trading_logo"
+        android:layout_width="0dp"
+        android:layout_height="212dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/login_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_play_online"
+        style="@style/ButtonLogin"
+        android:layout_marginTop="96dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_trading_logo"
+        android:paddingVertical="12dp"
+        android:backgroundTint="@color/black"
+        android:gravity="center"
+        android:text="@string/play_online"
+        app:strokeColor="@color/white"
+        android:fontFamily="@font/pixelated" />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_play_computer"
+        style="@style/ButtonLogin"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_play_online"
+        android:paddingVertical="12dp"
+        android:backgroundTint="@color/black"
+        android:gravity="center"
+        android:text="@string/play_computer"
+        app:strokeColor="@color/white"
+        android:fontFamily="@font/pixelated" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

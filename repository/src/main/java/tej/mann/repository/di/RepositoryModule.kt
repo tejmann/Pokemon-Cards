@@ -1,5 +1,6 @@
 package tej.mann.repository.di
 
+import com.amazonaws.mobile.client.AWSMobileClient
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Converter
@@ -7,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import tej.mann.remote.PokemonService
+import tej.mann.repository.LoginRepository
 import tej.mann.repository.PokemonRepository
 import tej.mann.repository.PokemonRepositoryImpl
 
@@ -31,5 +33,13 @@ fun createNetworkModule(baseUrl: String) = module {
 
     single<PokemonRepository>{
         PokemonRepositoryImpl(get())
+    }
+
+    single<AWSMobileClient> {
+        AWSMobileClient.getInstance()
+    }
+
+    single<LoginRepository> {
+        LoginRepository(get())
     }
 }

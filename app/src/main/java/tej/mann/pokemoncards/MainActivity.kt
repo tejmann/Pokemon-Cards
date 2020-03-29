@@ -5,13 +5,16 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.amazonaws.amplify.generated.graphql.CreatePokeMasterMutation
 import com.amazonaws.amplify.generated.graphql.ListPokeMastersQuery
+import com.amazonaws.mobile.client.AWSMobileClient
+import com.amazonaws.mobile.client.Callback
+import com.amazonaws.mobile.client.UserStateDetails
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient
 import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers
 import com.apollographql.apollo.GraphQLCall
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.exception.ApolloException
 import org.koin.android.ext.android.inject
-import tej.mann.login.LoginFragment
+import tej.mann.login.SignUpFragment
 import type.CreatePokeMasterInput
 
 
@@ -25,11 +28,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if(savedInstanceState == null){
             Log.d("_CALLED_","create_view_activity")
-            supportFragmentManager.beginTransaction().add(R.id.container, LoginFragment(),"").commit()
+            supportFragmentManager.beginTransaction().add(R.id.container, SignUpFragment(),"").commit()
         }
-        runMutation()
-        runQuery()
+        AWSMobileClient.getInstance().initialize(applicationContext, object: Callback<UserStateDetails>{
+            override fun onResult(result: UserStateDetails?) {
+                Log.d("_CALLED_INITIAL", "SUCCESS ${result?.userState}")
+            }
+
+            override fun onError(e: Exception?) {
+                Log.d("_CALLED_INITIAL", "FAILED")
+            }
+
+        })
     }
+
 
     fun runMutation(){
         val createPokeMasterInput = CreatePokeMasterInput.builder()

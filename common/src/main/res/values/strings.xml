@@ -2,6 +2,10 @@
 <resources>
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>
+    <string name="username">Username</string>
     <string name="login_button">Log In</string>
     <string name="computer_button">Play with computer</string>
+    <string name="play_online">Play Online</string>
+    <string name="play_computer">Play Computer</string>
+    <string name="invite">Invite Player</string>
 </resources>
