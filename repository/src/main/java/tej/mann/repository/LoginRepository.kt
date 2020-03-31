@@ -1,60 +1,45 @@
 package tej.mann.repository
 
-import android.net.wifi.hotspot2.pps.Credential
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.amazonaws.mobile.client.AWSMobileClient
-import com.amazonaws.mobile.client.Callback
 import com.amazonaws.mobile.client.results.SignInResult
-import com.amazonaws.mobile.client.results.SignUpResult
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 
 
-class LoginRepository(val mAWSMobileClient: AWSMobileClient) {
+class LoginRepository(val auth: FirebaseAuth) {
 
     private var _signInResult = MutableLiveData<SignInResult>()
     fun signInResult(): LiveData<SignInResult> = _signInResult
+    private var _signUpResult = MutableLiveData<FirebaseUser>()
+    fun signUpResult(): LiveData<FirebaseUser> = _signUpResult
 
 
-
-    fun signIn(email: String, password: String) {
-        mAWSMobileClient.signIn(email, password, null, object : Callback<SignInResult> {
-            override fun onResult(result: SignInResult?) {
-                Log.d("CALLED_RESULT", result?.signInState.toString())
-                _signInResult.postValue(result)
+    fun signUp(email: String, password: String){
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+            if (it.isSuccessful) {
+                _signUpResult.postValue(auth.currentUser)
+                auth.currentUser?.sendEmailVerification()
+            }
+            else {
+                Log.d("_CALLED_FAILED_SIGNUP", "${it.exception}")
+                _signUpResult.postValue(null)
             }
 
-            override fun onError(e: Exception?) {
-                Log.d("_CALLED_ERROR", e.toString())
-                _signInResult.postValue(null)
-            }
-        })
-    }
-
-    fun signUP(email: String, password: String, attributes: Map<String, String>) {
-        mAWSMobileClient.signUp(email, password, attributes, null, object : Callback<SignUpResult> {
-            override fun onResult(result: SignUpResult?) {
-                Log.d("_CALLED_SIGNUP_SUCC", result?.confirmationState.toString())
-
-            }
-
-            override fun onError(e: java.lang.Exception?) {
-                Log.d("_CALLED_SIGNUP_ERROR", e.toString())
-            }
-        })
-    }
-
-    suspend fun credentials(): String {
-        var result: String = ""
-        withContext(Dispatchers.IO) {
-            Log.d("_CALLED_CREDS","0")
-            result = mAWSMobileClient.username
         }
-        Log.d("_CALLED_CREDS","1")
-        return result
-
     }
+
+    fun updateUserProfile(name: String){
+        val profileUpdates = UserProfileChangeRequest.Builder()
+            .setDisplayName(name)
+            .build()
+        auth.currentUser?.updateProfile(profileUpdates)?.addOnCompleteListener {
+            if(it.isSuccessful) Log.d("_CALLED_USER_UPDATED", name)
+        }
+    }
+
 
 }

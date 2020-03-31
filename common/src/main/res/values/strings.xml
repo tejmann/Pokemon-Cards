@@ -8,4 +8,6 @@
     <string name="play_online">Play Online</string>
     <string name="play_computer">Play Computer</string>
     <string name="invite">Invite Player</string>
+    <string name="name">Name</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>

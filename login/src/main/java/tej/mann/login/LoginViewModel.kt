@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.amazonaws.mobile.client.results.SignInResult
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,30 +14,30 @@ import kotlin.coroutines.CoroutineContext
 
 class LoginViewModel(private val loginRepository: LoginRepository): ViewModel(), CoroutineScope {
 
-    fun signInResult(): LiveData<SignInResult> = loginRepository.signInResult()
-    fun fetchResult(email: String, password: String){
-        loginRepository.signIn(email, password)
+    enum class ButtonState{
+        LOADING,
+        ENABLED,
+        DISABLED
     }
 
-    private var _userCredentials = MutableLiveData<String>()
-    fun userCredentials(): LiveData<String> = _userCredentials
+    fun signInResult(): LiveData<SignInResult> = loginRepository.signInResult()
+    fun signUpResult(): LiveData<FirebaseUser> = loginRepository.signUpResult()
+
+    private var _signUpButtonState = MutableLiveData<ButtonState>()
+    fun signUpButtonState(): LiveData<ButtonState> = _signUpButtonState
+
+    fun updateSignupState(buttonState: ButtonState) {
+        _signUpButtonState.postValue(buttonState)
+    }
 
     fun signUp(email: String, password: String){
-        val attributes: Map<String, String> = mapOf(Pair("email","tejpartapsinghmann@gmail.com"))
-        loginRepository.signUP(email, password, attributes)
+        loginRepository.signUp(email, password)
     }
 
-    fun fetchCredentials(){
-        Log.d("_CALLED_USER_CRED_FETCH", "NULL")
-        launch {
-            val t = loginRepository.credentials()
-            if (t == "") {
-                Log.d("_CALLED_USER_CREDs", "NULL")
-            } else {
-               _userCredentials.postValue(t)
-            }
-        }
+    fun updateProfile(name: String) {
+        loginRepository.updateUserProfile(name)
     }
+
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
 

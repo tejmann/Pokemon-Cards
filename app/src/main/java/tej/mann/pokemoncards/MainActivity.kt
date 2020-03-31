@@ -3,24 +3,13 @@ package tej.mann.pokemoncards
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.amazonaws.amplify.generated.graphql.CreatePokeMasterMutation
-import com.amazonaws.amplify.generated.graphql.ListPokeMastersQuery
-import com.amazonaws.mobile.client.AWSMobileClient
-import com.amazonaws.mobile.client.Callback
-import com.amazonaws.mobile.client.UserStateDetails
-import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient
-import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers
-import com.apollographql.apollo.GraphQLCall
-import com.apollographql.apollo.api.Response
-import com.apollographql.apollo.exception.ApolloException
-import org.koin.android.ext.android.inject
-import tej.mann.login.SignUpFragment
-import type.CreatePokeMasterInput
+import com.google.firebase.auth.FirebaseAuth
+import tej.mann.login.WelcomeFragment
 
 
 class MainActivity : AppCompatActivity() {
 
-    val mAWSAppSyncClient:AWSAppSyncClient by inject()
+    private lateinit var auth:FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
@@ -28,59 +17,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if(savedInstanceState == null){
             Log.d("_CALLED_","create_view_activity")
-            supportFragmentManager.beginTransaction().add(R.id.container, SignUpFragment(),"").commit()
+            supportFragmentManager.beginTransaction().add(R.id.container, WelcomeFragment(),"").commit()
         }
-        AWSMobileClient.getInstance().initialize(applicationContext, object: Callback<UserStateDetails>{
-            override fun onResult(result: UserStateDetails?) {
-                Log.d("_CALLED_INITIAL", "SUCCESS ${result?.userState}")
-            }
+        auth = FirebaseAuth.getInstance()
+    }
 
-            override fun onError(e: Exception?) {
-                Log.d("_CALLED_INITIAL", "FAILED")
-            }
-
-        })
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        Log.d("_CALLED_USER_FIREBAsE", currentUser.toString())
     }
 
 
-    fun runMutation(){
-        val createPokeMasterInput = CreatePokeMasterInput.builder()
-            .name("Tej")
-            .score(0)
-            .description("new_user")
-            .build()
-        mAWSAppSyncClient.mutate(CreatePokeMasterMutation.builder().input(createPokeMasterInput).build())
-            .enqueue(mutationCallback)
 
-
-    }
-
-    private val mutationCallback =  object :GraphQLCall.Callback<CreatePokeMasterMutation.Data>(){
-        override fun onFailure(e: ApolloException) {
-            Log.d("_CALLED_",e.toString())
-        }
-
-        override fun onResponse(response: Response<CreatePokeMasterMutation.Data>) {
-            Log.d("_CALLED_","ADDED")
-        }
-    }
-
-    fun runQuery() {
-        mAWSAppSyncClient.query(ListPokeMastersQuery.builder().build())
-            .responseFetcher(AppSyncResponseFetchers.CACHE_AND_NETWORK)
-            .enqueue(queryCallback)
-    }
-
-    private val queryCallback = object : GraphQLCall.Callback<ListPokeMastersQuery.Data>() {
-        override fun onFailure(e: ApolloException) {
-            Log.d("_CALLED_","_FAILED_QUERY")
-        }
-
-        override fun onResponse(response: Response<ListPokeMastersQuery.Data>) {
-            Log.d("_CALLED_",response.data()?.listPokeMasters()?.items().toString())
-        }
-
-
-    }
 
 }
