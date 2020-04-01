@@ -82,32 +82,17 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <ProgressBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/signup_spinner"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginVertical="24dp"
-        android:visibility="invisible"
-        tools:visibility="visible"/>
-    <Button
+    <tej.mann.login.LoginButton
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/signup_form_button"
-        style="@style/ButtonLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginVertical="24dp"
-        android:paddingVertical="12dp"
-        android:backgroundTint="@color/cement"
-        android:gravity="center"
-        android:text="@string/title_activity_sign_up"
-        app:strokeColor="@color/white"
-        android:fontFamily="@font/pixelated"/>
+        app:loginButtonState="disabled"
+        app:loginButtonText="@string/signup_button"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

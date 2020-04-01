@@ -6,15 +6,13 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.layout_signup.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tej.mann.login.InviteFragment
+import tej.mann.login.LoginButton
 import tej.mann.login.LoginViewModel
 import tej.mann.login.R
 
@@ -25,7 +23,6 @@ class SignupFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         setupInputField()
-        viewModel.updateSignupState(LoginViewModel.ButtonState.DISABLED)
     }
 
     private fun setupInputField() {
@@ -45,52 +42,25 @@ class SignupFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.signUpButtonState().observe(viewLifecycleOwner, Observer {
-            updateState(it)
-        })
-        signup_form_button.setOnClickListener {
+        signup_form_button.updateOnClickListener {
             val email = signup_email.editText?.text.toString()
             val password = signup_password.editText?.text.toString()
             Log.d("_CALLED_ONCLICK_signup", "$email, $password")
             viewModel.signUp(email, password)
-            viewModel.updateSignupState(LoginViewModel.ButtonState.LOADING)
+            signup_form_button.buttonState = LoginButton.LoginButtonState.LOADING
         }
 
         viewModel.signUpResult().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if (it != null) {
                 showToast("Verification Email sent!")
-                viewModel.updateSignupState(LoginViewModel.ButtonState.DISABLED)
-                parentFragmentManager.beginTransaction().replace(R.id.container, InviteFragment()).commit()
-            }
-            else {
+                signup_form_button.buttonState = LoginButton.LoginButtonState.DISABLED
+                parentFragmentManager.beginTransaction().replace(R.id.container, InviteFragment())
+                    .commit()
+            } else {
                 showToast("Please check you email and try again")
-                viewModel.updateSignupState(LoginViewModel.ButtonState.ENABLED)
+                signup_form_button.buttonState = LoginButton.LoginButtonState.ENABLED
             }
         })
-    }
-
-    private fun updateState(state: LoginViewModel.ButtonState?) {
-        when (state) {
-            LoginViewModel.ButtonState.ENABLED -> enabledState(true)
-            LoginViewModel.ButtonState.DISABLED -> enabledState(false)
-            LoginViewModel.ButtonState.LOADING -> loadingState()
-        }
-
-    }
-
-    private fun loadingState() {
-        signup_spinner.visibility = VISIBLE
-        signup_form_button.visibility = INVISIBLE
-    }
-
-    private fun enabledState(enabled: Boolean) {
-        signup_spinner.visibility = INVISIBLE
-        with(signup_form_button) {
-            visibility = VISIBLE
-            isEnabled = enabled
-            alpha = if (enabled) 1.0f
-            else 0.25f
-        }
     }
 
     private fun showToast(messgae: String) {
@@ -103,16 +73,20 @@ class SignupFragment : Fragment() {
                 || signup_password.editText?.text.isNullOrEmpty()) && correctPassword()
     }
 
-    private fun correctPassword(): Boolean{
-        Log.d("_CALLED_EDIT", "${signup_confirm_password.editText?.text} vs ${signup_password.editText?.text}")
+    private fun correctPassword(): Boolean {
+        Log.d(
+            "_CALLED_EDIT",
+            "${signup_confirm_password.editText?.text} vs ${signup_password.editText?.text}"
+        )
         return signup_confirm_password.editText?.text.toString() == signup_password.editText?.text.toString()
     }
 
     private val textWatcher by lazy {
         object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (hasRequiredInfo()) viewModel.updateSignupState(LoginViewModel.ButtonState.ENABLED)
-                else viewModel.updateSignupState(LoginViewModel.ButtonState.DISABLED)
+                signup_form_button.buttonState =
+                    if (hasRequiredInfo()) LoginButton.LoginButtonState.ENABLED
+                    else LoginButton.LoginButtonState.DISABLED
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -129,6 +103,6 @@ class SignupFragment : Fragment() {
         signup_confirm_password_edit_text.removeTextChangedListener(textWatcher)
         signup_password_edit_text.removeTextChangedListener(textWatcher)
 
-        signup_form_button.setOnClickListener(null)
+        signup_form_button.updateOnClickListener(null)
     }
 }

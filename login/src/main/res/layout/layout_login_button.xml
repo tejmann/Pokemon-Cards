@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/login_button"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingVertical="16dp">
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_button_text"
+        style="@style/ButtonLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingVertical="12dp"
+        android:backgroundTint="@color/cement"
+        android:gravity="center"
+        android:text="@string/title_activity_sign_in"
+        app:strokeColor="@color/white"
+        android:fontFamily="@font/pixelated"
+        android:clickable="false"/>
+
+    <ProgressBar
+        android:id="@+id/login_button_spinner"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible"
+        android:clickable="false"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

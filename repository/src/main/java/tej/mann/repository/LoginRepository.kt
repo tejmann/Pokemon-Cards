@@ -12,8 +12,8 @@ import com.google.firebase.auth.UserProfileChangeRequest
 
 class LoginRepository(val auth: FirebaseAuth) {
 
-    private var _signInResult = MutableLiveData<SignInResult>()
-    fun signInResult(): LiveData<SignInResult> = _signInResult
+    private var _signInResult = MutableLiveData<FirebaseUser>()
+    fun signInResult(): LiveData<FirebaseUser> = _signInResult
     private var _signUpResult = MutableLiveData<FirebaseUser>()
     fun signUpResult(): LiveData<FirebaseUser> = _signUpResult
 
@@ -29,6 +29,17 @@ class LoginRepository(val auth: FirebaseAuth) {
                 _signUpResult.postValue(null)
             }
 
+        }
+    }
+
+    fun signIn(email: String, password: String){
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+            if (it.isSuccessful) {
+                _signInResult.postValue(auth.currentUser)
+            }
+            else {
+                _signInResult.postValue(null)
+            }
         }
     }
 

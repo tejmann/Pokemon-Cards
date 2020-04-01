@@ -65,35 +65,49 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <tej.mann.login.LoginButton
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/login_button"
-        style="@style/ButtonLogin"
+        android:id="@+id/main_login_button"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_password"
-        android:paddingVertical="12dp"
-        android:backgroundTint="@color/cement"
-        android:gravity="center"
-        android:text="@string/title_activity_sign_in"
-        app:strokeColor="@color/white"
-        android:fontFamily="@font/pixelated" />
+        app:loginButtonText="@string/signin_button"
+        app:loginButtonState="disabled"/>
+
     <Button
         android:layout_width="0dp"
-        style="@style/ButtonLogin"
+        style="@style/ButtonText"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:id="@+id/computer_button"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_button"
+        app:layout_constraintEnd_toStartOf="@+id/forgot_password_button"
+        app:layout_constraintTop_toBottomOf="@id/main_login_button"
+        app:layout_constraintHorizontal_bias="0.5"
         android:paddingVertical="12dp"
-        android:backgroundTint="@color/cement"
         android:gravity="center"
-        android:text="@string/title_activity_sign_up"
+        android:text="@string/signup_button"
         android:fontFamily="@font/pixelated"
-        app:strokeColor="@color/white" />
+        android:background="@color/black"
+        />
+
+    <Button
+        android:layout_width="0dp"
+        style="@style/ButtonText"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:id="@+id/forgot_password_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/computer_button"
+        app:layout_constraintTop_toBottomOf="@id/main_login_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:paddingVertical="12dp"
+        android:gravity="center"
+        android:text="@string/forgot_password"
+        android:fontFamily="@font/pixelated"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
