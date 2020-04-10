@@ -3,8 +3,8 @@ package tej.mann.gameroom
 import tej.mann.data.Stat
 
 data class Game(
-    val creator: Player? = null,
-    val joiner: Player? = null,
+    val player_1_name: String? = null,
+    val player_2_name: String? = null,
     val turn: String? = null,
     val move: Move = Move.SET,
     val draw: Draw = Draw.NO,
@@ -13,7 +13,6 @@ data class Game(
     val player_2_score: Int = 0
 )
 
-data class Player(val name: String = "", val number: Int = 0, val score: Int? = 0, val attr: Attr? = null)
 
 enum class Move {
     SET,
@@ -23,9 +22,4 @@ enum class Move {
 enum class Draw {
     YES,
     NO
-}
-
-enum class Attr {
-    CREATOR,
-    JOINER
 }

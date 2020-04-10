@@ -23,10 +23,8 @@ class RoomRepository(private val auth: FirebaseAuth, private val database: Fireb
     private val _draw: MutableLiveData<Boolean> = MutableLiveData()
     fun draw(): LiveData<Boolean> = _draw
 
-    var myPlayer: Player? = null
-    var otherPlayer: Player? = null
-    var player_id: String? = null
-    var other_player: String? = null
+    private var playerId: String? = null
+    private var otherPlayer: String? = null
     var number: String? = null
     private val _turn: MutableLiveData<Boolean> = MutableLiveData()
     fun turn(): LiveData<Boolean> = _turn
@@ -58,8 +56,8 @@ class RoomRepository(private val auth: FirebaseAuth, private val database: Fireb
                         if (snapshot != null) {
                             val path = snapshot.data?.get("game_path")
                             if (path != null) {
-                                player_id = "player_1"
-                                other_player = "player_2"
+                                playerId = "player_1"
+                                otherPlayer = "player_2"
                                 number = "0"
                                 _joined.postValue(true)
                                 gamePath = path.toString()
@@ -84,14 +82,10 @@ class RoomRepository(private val auth: FirebaseAuth, private val database: Fireb
                 it.update(doc, "status", Status.IN_PLAY)
             }
             .addOnSuccessListener {
-                val player1 = Player(creator, 1, 0, Attr.CREATOR)
                 val joiner = auth.currentUser?.email ?: ""
-                val player2 = Player(joiner, 2, 0, Attr.JOINER)
-                val game = Game(player1, player2, "player_1", Move.SET)
-                myPlayer = player2
-                otherPlayer = player1
-                this.player_id = "player_2"
-                other_player = "player_1"
+                val game = Game(creator, joiner, "player_1", Move.SET)
+                playerId = "player_2"
+                otherPlayer = "player_1"
                 number = "0"
                 doc.collection("game").add(
                     game
@@ -140,7 +134,7 @@ class RoomRepository(private val auth: FirebaseAuth, private val database: Fireb
             database.document(it).get()
                 .addOnSuccessListener { snapshot ->
                     val turn = snapshot.data?.get("turn")
-                    _turn.postValue(turn == player_id)
+                    _turn.postValue(turn == playerId)
                 }
         }
 
@@ -158,7 +152,7 @@ class RoomRepository(private val auth: FirebaseAuth, private val database: Fireb
                 snapshot?.let { s ->
                     val game = s.toObject<Game>()
                     val turn = game?.turn
-                    myTurn = turn == player_id
+                    myTurn = turn == playerId
                     val draw = game?.draw
                     _draw.postValue(draw == Draw.YES)
                 }
@@ -181,20 +175,20 @@ class RoomRepository(private val auth: FirebaseAuth, private val database: Fireb
                         if (stat.stat == cStat.stat) {
                             val cValue = cStat.baseStat
                             if (stat.baseStat > cValue) {
-                                val score = snapshot["${player_id}_score"].toString().toInt() + 1
+                                val score = snapshot["${playerId}_score"].toString().toInt() + 1
                                 doc.update(
                                     mapOf(
-                                        "${player_id}_score" to score,
-                                        "turn" to player_id,
+                                        "${playerId}_score" to score,
+                                        "turn" to playerId,
                                         "move" to Move.SET
                                     )
                                 )
                             } else {
-                                val score = snapshot["${other_player}_score"].toString().toInt() + 1
+                                val score = snapshot["${otherPlayer}_score"].toString().toInt() + 1
                                 doc.update(
                                     mapOf(
-                                        "${other_player}_score" to score,
-                                        "turn" to other_player,
+                                        "${otherPlayer}_score" to score,
+                                        "turn" to otherPlayer,
                                         "move" to Move.SET
                                     )
                                 )
@@ -214,7 +208,7 @@ class RoomRepository(private val auth: FirebaseAuth, private val database: Fireb
             mapOf(
                 "stat" to stat,
                 "move" to Move.COMPARE,
-                "turn" to other_player,
+                "turn" to otherPlayer,
                 "draw" to Draw.NO
             )
         )
