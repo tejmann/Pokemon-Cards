@@ -6,10 +6,10 @@ data class Pokemon(val name: String,val stats: List<Stat>) {
 
 }
 
-data class Stat(@SerializedName("base_stat") val baseStat: Int, val stat:StatName) {
+data class Stat(@SerializedName("base_stat") val baseStat: Int = 0, val stat:StatName = StatName()) {
 
 }
 
-data class StatName(val name: String) {
+data class StatName(val name: String = "") {
 
 }

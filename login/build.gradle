@@ -57,6 +57,7 @@ dependencies {
     implementation project(":common")
     implementation project(":repository")
     implementation project(path: ':app', configuration: 'default')
+    implementation project(":gameroom")
 
 
 

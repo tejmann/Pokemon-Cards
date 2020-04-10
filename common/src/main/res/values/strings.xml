@@ -12,4 +12,5 @@
     <string name="invite">Invite Player</string>
     <string name="name">Name</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="create_room">Create Room</string>
 </resources>

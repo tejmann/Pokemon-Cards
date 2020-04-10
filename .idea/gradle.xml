@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/data" />
+            <option value="$PROJECT_DIR$/gameroom" />
             <option value="$PROJECT_DIR$/login" />
             <option value="$PROJECT_DIR$/pokemon" />
             <option value="$PROJECT_DIR$/remote" />

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.login_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import tej.mann.gameroom.RoomFragment
 import tej.mann.login.di.SignupFragment
 
 class LoginFragment : Fragment() {
@@ -53,7 +54,7 @@ class LoginFragment : Fragment() {
             if (it != null) {
                 showToast("Welcome ${it.displayName}")
                 main_login_button.buttonState = LoginButton.LoginButtonState.DISABLED
-                parentFragmentManager.beginTransaction().replace(R.id.container, InviteFragment())
+                parentFragmentManager.beginTransaction().replace(R.id.container, RoomFragment())
                     .commit()
             } else {
                 showToast("User not found.")
