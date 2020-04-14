@@ -3,7 +3,6 @@ package tej.mann.gameroom
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.layout_room_viewholder.view.*
 
@@ -38,6 +37,6 @@ class RoomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 }
 
 interface ClickListener{
-    abstract fun onClick(s: String = "")
+    fun onClick(s: String = "")
 }
 

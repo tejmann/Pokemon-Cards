@@ -8,15 +8,16 @@ data class Game(
     val turn: String? = null,
     val move: Move = Move.SET,
     val draw: Draw = Draw.NO,
-    val stat: Stat? = null,
-    val player_1_score: Int = 0,
-    val player_2_score: Int = 0
+    val curr_stat: Stat? = null,
+    val old_stat: Stat? = null,
+    val left_game: String? = null
 )
 
 
 enum class Move {
     SET,
-    COMPARE
+    COMPARE,
+    EVALUATE
 }
 
 enum class Draw {

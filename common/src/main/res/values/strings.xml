@@ -11,6 +11,7 @@
     <string name="play_computer">Play Computer</string>
     <string name="invite">Invite Player</string>
     <string name="name">Name</string>
+    <string name="pokemon">Pokemon</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="create_room">Create Room</string>
 </resources>

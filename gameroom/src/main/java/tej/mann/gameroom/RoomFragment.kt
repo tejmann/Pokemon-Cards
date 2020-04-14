@@ -5,23 +5,22 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
 import kotlinx.android.synthetic.main.layout_room.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import tej.mann.common.views.showToast
 
 class RoomFragment : Fragment(), ClickListener {
 
     val db: FirebaseFirestore by inject()
     val auth: FirebaseAuth by inject()
-    val recyclerViewAdapter = RecyclerViewAdapter(this)
-    val viewModel: RoomViewModel by viewModel()
+    private val recyclerViewAdapter = RecyclerViewAdapter(this)
+    private val viewModel: RoomViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,13 +33,15 @@ class RoomFragment : Fragment(), ClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d("_CALLED_VALUE_CREATD", viewModel.created().value.toString())
+        Log.d("_CALLED_VALUE_JOINED", viewModel.joined().value.toString())
         create_room.setOnClickListener {
             viewModel.createRoom()
         }
 
         viewModel.joined().observe(viewLifecycleOwner, Observer {
-            if(it) {
-                parentFragmentManager.beginTransaction().replace(R.id.container, GameFragment()).commit()
+            if (it.first) {
+                parentFragmentManager.beginTransaction().replace(R.id.container, GameFragment.newInstance(it.second)).commit()
             }
         })
 
@@ -55,8 +56,8 @@ class RoomFragment : Fragment(), ClickListener {
         }
 
         viewModel.created().observe(viewLifecycleOwner, Observer {
-            if (it) {
-                parentFragmentManager.beginTransaction().replace(R.id.container, GameFragment()).commit()
+            if (it.first) {
+                parentFragmentManager.beginTransaction().replace(R.id.container, GameFragment.newInstance(it.second)).commit()
             }
         })
 
@@ -67,13 +68,15 @@ class RoomFragment : Fragment(), ClickListener {
         viewModel.checkAvailableRooms()
     }
 
-    private fun showToast(messgae: String) {
-        Toast.makeText(context, messgae, Toast.LENGTH_SHORT).show()
-    }
 
     override fun onClick(s: String) {
-        viewModel.createGame(s)
+        viewModel.joinRoom(s)
         showToast("clicked")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.removeRegistration()
     }
 
 

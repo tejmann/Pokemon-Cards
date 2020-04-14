@@ -8,65 +8,96 @@
     android:paddingTop="16dp"
     android:background="@color/black">
 
+    <TextView
+        android:layout_width="0dp"
+        android:id="@+id/player_name"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="player1"
+        android:fontFamily="@font/pixelated"
+        android:textAllCaps="true"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="20sp"/>
+
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@id/pokemon_name"
+        app:layout_constraintBottom_toTopOf="@id/turn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/charizard" />
+        tools:src="@drawable/charizard"
+        android:contentDescription="@string/pokemon" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:id="@+id/turn"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/pokemon_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="16dp"
+        tools:text = "your turn"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:gravity="center"
+        />
 
     <TextView
         android:id="@+id/stat3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/backround_stats"
         android:gravity="center"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="STAT3" />
+        app:layout_constraintEnd_toStartOf="@id/stat4"
+        tools:text="STAT3 = 13" />
 
     <TextView
         android:id="@+id/stat4"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/backround_stats"
         android:gravity="center"
         tools:text="STAT4"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/stat3"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/stat1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:layout_marginBottom="32dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@+id/stat3"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/stat2"
         android:background="@drawable/backround_stats"
         android:gravity="center"
         tools:text="STAT1" />
 
     <TextView
         android:id="@+id/stat2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/stat4"
+        app:layout_constraintStart_toEndOf="@id/stat1"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/backround_stats"
         android:gravity="center"
@@ -76,15 +107,13 @@
         android:id="@+id/pokemon_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/stat1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="NAME"
-        android:textColor="@color/khakhi"/>
+        android:textColor="@color/khakhi"
+        android:textSize="20sp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
