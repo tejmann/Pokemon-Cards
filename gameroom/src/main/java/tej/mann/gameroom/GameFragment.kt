@@ -34,7 +34,7 @@ class GameFragment : Fragment() {
 
     private fun setView(view: TextView, stat: Stat) {
         with(view) {
-            val display = "${stat.stat.name}/${stat.baseStat}"
+            val display = "${stat.stat.name} = ${stat.baseStat}"
             text = display
             setOnClickListener {
                 if (viewModel.myTurn) {
@@ -63,6 +63,14 @@ class GameFragment : Fragment() {
             viewModel.listenToGame(it)
             viewModel.fetchPokemon()
         }
+
+        viewModel.myScore.observe(viewLifecycleOwner, Observer {
+            my_score.text = it
+        })
+
+        viewModel.oppScore.observe(viewLifecycleOwner, Observer {
+            opponents_score.text = it
+        })
 
         viewModel.leftGame().observe(viewLifecycleOwner, Observer {
             showToast("$it left the game.")

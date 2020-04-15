@@ -4,23 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
+    android:background="@color/black"
     android:paddingTop="16dp"
-    android:background="@color/black">
+    android:paddingBottom="16dp">
 
     <TextView
-        android:layout_width="0dp"
         android:id="@+id/player_name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="player1"
-        android:fontFamily="@font/pixelated"
-        android:textAllCaps="true"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:textSize="20sp"/>
+        tools:text="player1"
+        android:fontFamily="@font/pokemonsolid"/>
 
 
     <ImageView
@@ -28,39 +28,69 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="32dp"
+        android:contentDescription="@string/pokemon"
         app:layout_constraintBottom_toTopOf="@id/turn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/charizard"
-        android:contentDescription="@string/pokemon" />
+        tools:src="@drawable/bulbasor" />
 
     <TextView
+        android:id="@+id/my_score"
         android:layout_width="0dp"
-        android:id="@+id/turn"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/pokemon_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="16dp"
-        tools:text = "your turn"
+        android:gravity="center"
         android:textAllCaps="true"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/pokemon_name"
+        app:layout_constraintEnd_toStartOf="@id/turn"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        tools:text="000000" />
+
+    <TextView
+        android:id="@+id/turn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
-        />
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/pokemon_name"
+        app:layout_constraintEnd_toStartOf="@id/opponents_score"
+        app:layout_constraintStart_toEndOf="@id/my_score"
+        tools:text="your turn" />
+
+    <TextView
+        android:id="@+id/opponents_score"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/pokemon_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/turn"
+        tools:text="000000"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/stat3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/backround_stats"
-        android:gravity="center"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_stats"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/stat4"
+        app:layout_constraintStart_toStartOf="parent"
         tools:text="STAT3 = 13" />
 
     <TextView
@@ -69,25 +99,29 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/backround_stats"
+        android:background="@drawable/background_stats"
+        android:foreground="?attr/selectableItemBackground"
         android:gravity="center"
-        tools:text="STAT4"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/stat3"
-        app:layout_constraintEnd_toEndOf="parent" />
+        tools:text="STAT4" />
 
     <TextView
         android:id="@+id/stat1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="32dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/stat3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/stat2"
-        android:background="@drawable/backround_stats"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/background_stats"
+        android:foreground="?attr/selectableItemBackground"
         android:gravity="center"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/stat3"
+        app:layout_constraintEnd_toStartOf="@id/stat2"
+        app:layout_constraintStart_toStartOf="parent"
         tools:text="STAT1" />
 
     <TextView
@@ -96,11 +130,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/stat4"
-        app:layout_constraintStart_toEndOf="@id/stat1"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/backround_stats"
+        android:background="@drawable/background_stats"
+        android:foreground="?attr/selectableItemBackground"
         android:gravity="center"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/stat4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/stat1"
         tools:text="STAT2" />
 
     <TextView
@@ -109,11 +145,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/stat1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="NAME"
-        android:textColor="@color/khakhi"
-        android:textSize="20sp" />
+        tools:text="NAME" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,7 +41,11 @@ class GameViewModel(
     private val _currentStat: MutableLiveData<String> = MutableLiveData()
     fun currentStat(): LiveData<String> = _currentStat
 
+    private val _myScore: MutableLiveData<String> = MutableLiveData()
+    val myScore: LiveData<String> = _myScore
 
+    private val _oppScore: MutableLiveData<String> = MutableLiveData()
+    val oppScore: LiveData<String> = _oppScore
 
     fun pokemon(): LiveData<Pokemon> = pokemon
 
@@ -59,7 +63,7 @@ class GameViewModel(
                 }
             }
             oldStat?.let { old ->
-                if (old.stat.name == stat.stat.name ) {
+                if (old.stat.name == stat.stat.name) {
                     database.runTransaction { transaction ->
                         transaction.update(doc, "curr_stat", stat, "draw", Draw.NO)
                     }
@@ -88,6 +92,19 @@ class GameViewModel(
 
                 _currentStat.postValue(game?.old_stat?.stat?.name)
 
+                val creator = game?.creator == email
+
+                val creatorScore = game?.creator_score
+                val joinerScore = game?.joiner_score
+
+                if (creator) {
+                    _myScore.postValue(creatorScore.toString())
+                    _oppScore.postValue(joinerScore.toString())
+                } else {
+                    _myScore.postValue(joinerScore.toString())
+                    _oppScore.postValue(creatorScore.toString())
+                }
+
                 val draw = game?.draw
                 _draw.postValue(draw == Draw.YES)
 
@@ -105,7 +122,7 @@ class GameViewModel(
         val doc = game?.let { database.document(it) }
         database.runTransaction { transaction ->
             if (doc != null) {
-                transaction.update(doc, "left_game",email)
+                transaction.update(doc, "left_game", email)
             }
         }
     }

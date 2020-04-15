@@ -340,3 +340,16 @@
 //})
 
 
+//with(itemView) {
+//    deposit_amount.setTextVisibility(item.balance?.formattedAmount)
+//    deposit_button.buttonState = when {
+//        item.loading -> ActionButton.ActionButtonState.LOADING
+//        item.enabled -> ActionButton.ActionButtonState.ENABLED
+//        else -> ActionButton.ActionButtonState.DISABLED
+//    }
+//
+//    deposit_button.setOnClickListener {
+//        clickListener.onItemClick(item)
+//    }
+//}
+
