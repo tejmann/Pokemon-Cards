@@ -1,6 +1,5 @@
 package tej.mann.repository.di
 
-import com.amazonaws.mobile.client.AWSMobileClient
 import com.google.firebase.auth.FirebaseAuth
 import okhttp3.OkHttpClient
 import org.koin.dsl.module

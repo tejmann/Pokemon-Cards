@@ -20,7 +20,7 @@
         android:paddingVertical="12dp"
         android:backgroundTint="@color/cement"
         android:gravity="center"
-        android:text="@string/title_activity_sign_in"
+        android:text="@string/signin_button"
         app:strokeColor="@color/white"
         android:fontFamily="@font/pixelated"
         android:clickable="false"/>

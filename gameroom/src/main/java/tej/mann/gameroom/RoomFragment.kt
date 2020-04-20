@@ -14,6 +14,8 @@ import kotlinx.android.synthetic.main.layout_room.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tej.mann.common.views.showToast
+import tej.mann.data.ClickListener
+import tej.mann.data.RecyclerViewAdapter
 
 class RoomFragment : Fragment(), ClickListener {
 
@@ -39,11 +41,19 @@ class RoomFragment : Fragment(), ClickListener {
             viewModel.createRoom()
         }
 
-        viewModel.joined().observe(viewLifecycleOwner, Observer {
-            if (it.first) {
-                parentFragmentManager.beginTransaction().replace(R.id.container, GameFragment.newInstance(it.second)).commit()
-            }
-        })
+        cap.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.animation_enter, R.anim.animation_exit)
+                .replace(R.id.container, CollectionFragment()).addToBackStack(null).commit()
+        }
+
+        viewModel.joined()
+            .observe(viewLifecycleOwner, Observer {
+                if (it.first) {
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.container, GameFragment.newInstance(it.second)).commit()
+                }
+            })
 
         viewModel.emptyRooms().observe(viewLifecycleOwner, Observer {
             recyclerViewAdapter.data = it
@@ -57,7 +67,8 @@ class RoomFragment : Fragment(), ClickListener {
 
         viewModel.created().observe(viewLifecycleOwner, Observer {
             if (it.first) {
-                parentFragmentManager.beginTransaction().replace(R.id.container, GameFragment.newInstance(it.second)).commit()
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.container, GameFragment.newInstance(it.second)).commit()
             }
         })
 
@@ -78,6 +89,4 @@ class RoomFragment : Fragment(), ClickListener {
         super.onStop()
         viewModel.removeRegistration()
     }
-
-
 }

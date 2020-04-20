@@ -1,4 +1,4 @@
-package tej.mann.login
+package tej.mann.common.views
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import kotlinx.android.synthetic.main.layout_login_button.view.*
+import tej.mann.common.R
 
 class LoginButton @JvmOverloads constructor(
     context: Context,
@@ -33,7 +34,8 @@ class LoginButton @JvmOverloads constructor(
             updateText(value)
         }
 
-    var buttonState: LoginButtonState = LoginButtonState.ENABLED
+    var buttonState: LoginButtonState =
+        LoginButtonState.ENABLED
         set(value) {
             field = value
             updateButtonState(value)
@@ -42,10 +44,12 @@ class LoginButton @JvmOverloads constructor(
     init {
         LayoutInflater.from(context).inflate(R.layout.layout_login_button, this, true)
         var givenText: String? = null
-        var givenState = LoginButtonState.ENABLED
+        var givenState =
+            LoginButtonState.ENABLED
 
         if (attrs != null) {
-            val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoginButton, 0, 0)
+            val typedArray = context.obtainStyledAttributes(attrs,
+                R.styleable.LoginButton, 0, 0)
             try {
                 val state = typedArray.getInt(
                     R.styleable.LoginButton_loginButtonState,
@@ -80,7 +84,8 @@ class LoginButton @JvmOverloads constructor(
         if (shouldAnimate) {
             login_button.animate()
                 .alpha(finalAlpha)
-                .duration = ALPHA_DURATION_MS
+                .duration =
+                ALPHA_DURATION_MS
         } else {
             login_button.alpha = finalAlpha
         }

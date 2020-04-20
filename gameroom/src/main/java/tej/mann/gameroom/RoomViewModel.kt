@@ -10,6 +10,8 @@ import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import tej.mann.data.Room
+import tej.mann.data.Status
 import kotlin.coroutines.CoroutineContext
 
 class RoomViewModel(
@@ -44,7 +46,10 @@ class RoomViewModel(
 
     fun createRoom() {
         val email = auth.currentUser?.email ?: "null"
-        val room = Room(email, Status.EMPTY)
+        val room = Room(
+            email,
+            Status.EMPTY
+        )
 
         val ref = database.collection("rooms")
             .whereEqualTo("name", email)
@@ -113,6 +118,4 @@ class RoomViewModel(
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
-
-
 }

@@ -28,6 +28,7 @@ class GameFragment : Fragment() {
                 putString(KEY_CREATOR, creator)
             }
         }
+        const val STAT = 3
     }
 
     private var path: String = ""
@@ -68,31 +69,35 @@ class GameFragment : Fragment() {
             my_score.text = it
         })
 
+        viewModel.winner().observe(viewLifecycleOwner, Observer {
+            parentFragmentManager.beginTransaction().replace(R.id.container,GameEndFragment.newInstance(it)).commit()
+        })
+
         viewModel.oppScore.observe(viewLifecycleOwner, Observer {
             opponents_score.text = it
         })
 
-        viewModel.leftGame().observe(viewLifecycleOwner, Observer {
-            showToast("$it left the game.")
+        viewModel.leftGame.observe(viewLifecycleOwner, Observer {
+            showToast(getString(R.string.left_game, it))
             parentFragmentManager.beginTransaction().replace(R.id.container, RoomFragment()).commit()
         })
-        viewModel.draw().observe(viewLifecycleOwner, Observer {
+        viewModel.draw.observe(viewLifecycleOwner, Observer {
             if (it) viewModel.fetchPokemon()
         })
 
-        viewModel.currentTurn().observe(viewLifecycleOwner, Observer {
-            turn.text = it
+        viewModel.currentTurn.observe(viewLifecycleOwner, Observer {
+            turn.text = if (it) getString(R.string.your_turn) else getString(R.string.opp_turn)
         })
-        viewModel.currentStat().observe(viewLifecycleOwner, Observer {
+        viewModel.currentStat.observe(viewLifecycleOwner, Observer {
             player_name.text = it
         })
-        viewModel.pokemon().observe(viewLifecycleOwner, Observer { pokemon ->
+        viewModel.pokemon.observe(viewLifecycleOwner, Observer { pokemon ->
             pokemon_name.text = pokemon.name
             Glide.with(this).load(pokemon.sprites.frontDefault).into(imageView2)
             setView(stat1, pokemon.stats[0])
             setView(stat2, pokemon.stats[1])
             setView(stat3, pokemon.stats[2])
-            setView(stat4, pokemon.stats[3])
+            setView(stat4, pokemon.stats[STAT])
         })
 
     }

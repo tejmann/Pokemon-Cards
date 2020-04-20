@@ -6,6 +6,7 @@
     <string name="signin_button">Sign In</string>
     <string name="signup_button">Sign Up</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="sign_out">Sign out</string>
     <string name="computer_button">Play with computer</string>
     <string name="play_online">Play Online</string>
     <string name="play_computer">Play Computer</string>
@@ -14,4 +15,14 @@
     <string name="pokemon">Pokemon</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="create_room">Create Room</string>
+    <string name="your_turn">Your Turn</string>
+    <string name="opp_turn">Opponent\'s turn</string>
+    <string name="left_game">%1$s left the game.</string>
+    <string name="won_game">Congratulations, you won!</string>
+    <string name="lost_game">You Get Nothing! You Lose! Good Day, Sir!</string>
+    <string name="found_pokemon">If you were a pokemon you would be …</string>
+    <string name="won_pokemon">You sir are the greatest pokemon trainer, I salute you</string>
+    <string name="return_room">Return to game room</string>
+    <string name="pokemon_added">A new Pokemon has been added to your collection</string>
+
 </resources>

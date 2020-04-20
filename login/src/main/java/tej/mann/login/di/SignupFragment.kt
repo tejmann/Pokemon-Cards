@@ -7,18 +7,28 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.layout_signup.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import tej.mann.login.InviteFragment
-import tej.mann.login.LoginButton
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import tej.mann.common.views.showToast
+import tej.mann.gameroom.RoomFragment
+import tej.mann.common.views.LoginButton
 import tej.mann.login.LoginViewModel
 import tej.mann.login.R
 
 class SignupFragment : Fragment() {
 
-    private val viewModel: LoginViewModel by viewModel()
+    private val viewModel: LoginViewModel by sharedViewModel()
+
+    companion object {
+        const val KEY_ACTION = "action"
+        fun newInstance(type: String): SignupFragment = SignupFragment().apply {
+            arguments = Bundle().apply {
+                putString(KEY_ACTION, type)
+            }
+        }
+    }
 
     override fun onStart() {
         super.onStart()
@@ -42,29 +52,38 @@ class SignupFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        arguments?.getString(KEY_ACTION)?.let {
+            if (it == LoginViewModel.FORGOT_PASSWORD) {
+                forgot_password_page.visibility = View.VISIBLE
+            } else {
+                signup_page.visibility = View.VISIBLE
+            }
+        }
         signup_form_button.updateOnClickListener {
             val email = signup_email.editText?.text.toString()
             val password = signup_password.editText?.text.toString()
-            Log.d("_CALLED_ONCLICK_signup", "$email, $password")
             viewModel.signUp(email, password)
             signup_form_button.buttonState = LoginButton.LoginButtonState.LOADING
         }
 
+        forgot_password_page_button.updateOnClickListener {
+            val email = forgot_password_email.editText?.text.toString()
+            viewModel.forgotPassword(email)
+        }
+
+        viewModel.toast().observe(viewLifecycleOwner, Observer {
+            showToast(it)
+            signup_form_button.buttonState = LoginButton.LoginButtonState.ENABLED
+        })
+
         viewModel.signUpResult().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if (it != null) {
-                showToast("Verification Email sent!")
                 signup_form_button.buttonState = LoginButton.LoginButtonState.DISABLED
-                parentFragmentManager.beginTransaction().replace(R.id.container, InviteFragment())
+                parentFragmentManager.beginTransaction().replace(R.id.container, RoomFragment())
                     .commit()
-            } else {
-                showToast("Please check you email and try again")
-                signup_form_button.buttonState = LoginButton.LoginButtonState.ENABLED
             }
         })
-    }
 
-    private fun showToast(messgae: String) {
-        Toast.makeText(context, messgae, Toast.LENGTH_SHORT).show()
     }
 
     private fun hasRequiredInfo(): Boolean {
@@ -89,9 +108,11 @@ class SignupFragment : Fragment() {
                     else LoginButton.LoginButtonState.DISABLED
             }
 
+            @Suppress("EmptyFunctionBlock")
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
+            @Suppress("EmptyFunctionBlock")
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
         }

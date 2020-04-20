@@ -6,6 +6,6 @@ import tej.mann.login.LoginViewModel
 
 val loginModule = module {
     viewModel {
-        LoginViewModel(get())
+        LoginViewModel(get(), get(), get())
     }
 }

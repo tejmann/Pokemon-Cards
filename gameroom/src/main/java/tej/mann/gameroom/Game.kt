@@ -1,5 +1,6 @@
 package tej.mann.gameroom
 
+import com.google.firebase.firestore.PropertyName
 import tej.mann.data.Stat
 
 data class Game(
@@ -8,11 +9,12 @@ data class Game(
     val turn: String? = null,
     val move: Move = Move.SET,
     val draw: Draw = Draw.NO,
-    val curr_stat: Stat? = null,
-    val old_stat: Stat? = null,
-    val left_game: String? = null,
-    val creator_score: Long = 0,
-    val joiner_score: Long = 0
+    @get:PropertyName("curr_stat") @set:PropertyName("curr_stat") var currStat: Stat? = null,
+    @get:PropertyName("old_stat") @set:PropertyName("old_stat") var oldStat: Stat? = null,
+    @get:PropertyName("left_game") @set:PropertyName("left_game") var leftGame: String? = null,
+    @get:PropertyName("creator_score") @set:PropertyName("creator_score") var creatorScore: Long = 0,
+    @get:PropertyName("joiner_score") @set:PropertyName("joiner_score") var joinerScore: Long = 0,
+    val winner: String? = null
 )
 
 
