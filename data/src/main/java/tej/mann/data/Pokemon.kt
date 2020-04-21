@@ -1,6 +1,7 @@
 package tej.mann.data
 
 
+import com.google.firebase.firestore.PropertyName
 import com.google.gson.annotations.SerializedName
 
 data class Pokemon(
@@ -14,4 +15,7 @@ data class Stat(@SerializedName("base_stat") val baseStat: Int = 0, val stat: St
 
 data class StatName(val name: String = "")
 
-data class PokemonList(val pokemonList: List<Pokemon> = emptyList())
+data class PokemonList(
+    @get:PropertyName("pokemon_list") @set:PropertyName("pokemon_list")
+    var pokemonList: List<Pokemon> = emptyList()
+)

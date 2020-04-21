@@ -16,6 +16,9 @@ class EndGameViewModel(
 ) : ViewModel(),
     CoroutineScope {
 
+    companion object{
+        const val POKEMON_LIST = "pokemon_list"
+    }
 
     fun fetchPokemon() {
         val name = auth.currentUser?.email ?: ""
@@ -23,7 +26,7 @@ class EndGameViewModel(
             pokemonRepository.fetchPokemon()?.let { pokemon ->
                 val doc = database.collection("users").document(name)
                 database.runTransaction { transaction ->
-                    transaction.update(doc, "pokemons", FieldValue.arrayUnion(pokemon))
+                    transaction.update(doc, POKEMON_LIST, FieldValue.arrayUnion(pokemon))
                 }
             }
         }

@@ -20,61 +20,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87b7b668-a0a3-49aa-8d62-b6aa2a21eaf4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../common/src/main/res/drawable/border_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/src/main/java/tej/mann/data/RecyclerViewAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/src/main/res/anim/animation_enter.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/src/main/res/anim/animation_exit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/src/main/res/drawable/border.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/src/main/res/layout/layout_pokemon_viewholder.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../firebase/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../firebase/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../firebase/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../firebase/src/androidTest/java/tej/mann/firebase/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../firebase/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../firebase/src/test/java/tej/mann/firebase/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/CollectionFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/CollectionViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/EndGameViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/GameEndFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/GameEndViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameroom/src/main/res/drawable/pokeball.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameroom/src/main/res/layout/layout_collection.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gameroom/src/main/res/layout/layout_win.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/tej/mann/pokemoncards/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/tej/mann/pokemoncards/App.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/main/java/tej/mann/pokemoncards/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/tej/mann/pokemoncards/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/tej/mann/pokemoncards/di/MainModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/tej/mann/pokemoncards/di/MainModule.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/main/java/tej/mann/pokemoncards/di/appComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/tej/mann/pokemoncards/di/appComponent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../common/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../common/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../common/src/main/java/tej/mann/common/base/BaseFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../common/src/main/java/tej/mann/common/base/BaseViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../firebase/consumer-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../common/src/main/java/tej/mann/common/views/CustomTextEdit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../common/src/main/java/tej/mann/common/views/CustomTextInputEditText.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../common/src/main/java/tej/mann/common/views/Extension.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../common/src/main/java/tej/mann/common/views/Extension.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../common/src/main/java/tej/mann/common/views/js.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../common/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../common/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../data/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/src/main/java/tej/mann/data/Pokemon.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../data/src/main/java/tej/mann/data/Pokemon.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/Game.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/Game.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/GameFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/GameFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/GameViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/GameViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/RecyclerViewAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/Room.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../data/src/main/java/tej/mann/data/Room.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/src/main/java/tej/mann/data/Room.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../data/src/main/java/tej/mann/data/Room.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/CollectionFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/CollectionFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/EndGameViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/EndGameViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/RoomFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/RoomFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/RoomRepository.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/RoomViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/RoomViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/di/GameRepository.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/di/RoomModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/di/RoomModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/res/drawable/background_stats.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../common/src/main/res/drawable/background_stats.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/res/layout/layout_room.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/res/layout/layout_room.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/res/layout/layout_room_viewholder.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../data/src/main/res/layout/layout_room_viewholder.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../login/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../login/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/LoginViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/LoginViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/di/SignupFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/di/SignupFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/InviteFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/LoginFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/LoginViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/LoginViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/WelcomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/WelcomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/di/SignupFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/SignupFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/di/loginModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/di/loginModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../repository/src/main/java/tej/mann/repository/PokemonRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../repository/src/main/java/tej/mann/repository/PokemonRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/res/layout/layout_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/res/layout/layout_signup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/res/layout/layout_welcome.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/res/layout/layout_welcome.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/res/layout/login_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/res/layout/login_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +109,7 @@
       <option name="presentableId" value="Default" />
       <updated>1586632457115</updated>
       <workItem from="1586632459526" duration="41347000" />
-      <workItem from="1587347222697" duration="381000" />
+      <workItem from="1587347222697" duration="955000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,7 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 const END_GAME = 20
+const STATUS_DELETE = "DELETE"
 
 //Creates a new Game document if any player joins a room.
 exports.createGame = functions.firestore
@@ -92,8 +93,7 @@ exports.onSetStat = functions.firestore
             let draw;
             if (newNumber === END_GAME) {
                 draw = "NO";
-            }
-            else {
+            } else {
                 draw = "YES"
             }
             return change.after.ref.update({
@@ -142,13 +142,25 @@ exports.leftGame = functions.firestore
         const end = after.end_game;
         if (left == null && end == null) {
             return null;
-        }
-        else {
+        } else {
             return change.after.ref.delete()
                 .then(() => {
                     room.delete();
                 })
 
+        }
+    })
+
+exports.deleteRoom = functions.firestore
+    .document('rooms/{roomId}')
+    .onUpdate((change) => {
+        const after = change.after.data();
+        const status = after.status;
+        if (status != STATUS_DELETE) {
+            return null;
+        }
+        else {
+            return change.after.ref.delete()
         }
     })
 

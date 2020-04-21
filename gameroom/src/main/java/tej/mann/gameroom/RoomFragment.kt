@@ -24,19 +24,23 @@ class RoomFragment : Fragment(), ClickListener {
     private val recyclerViewAdapter = RecyclerViewAdapter(this)
     private val viewModel: RoomViewModel by viewModel()
 
+    private var backPressHandler: BackPressHandler? = null
+
+    companion object{
+        const val TAG = "room"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        backPressHandler = activity as? BackPressHandler
         return inflater.inflate(R.layout.layout_room, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        Log.d("_CALLED_VALUE_CREATD", viewModel.created().value.toString())
-        Log.d("_CALLED_VALUE_JOINED", viewModel.joined().value.toString())
         create_room.setOnClickListener {
             viewModel.createRoom()
         }
@@ -44,7 +48,8 @@ class RoomFragment : Fragment(), ClickListener {
         cap.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.animation_enter, R.anim.animation_exit)
-                .replace(R.id.container, CollectionFragment()).addToBackStack(null).commit()
+                .addToBackStack(TAG)
+                .replace(R.id.container, CollectionFragment()).commit()
         }
 
         viewModel.joined()
@@ -76,17 +81,32 @@ class RoomFragment : Fragment(), ClickListener {
 
     override fun onStart() {
         super.onStart()
+        backPressHandler?.selectFragment(this)
         viewModel.checkAvailableRooms()
     }
 
 
     override fun onClick(s: String) {
         viewModel.joinRoom(s)
-        showToast("clicked")
     }
 
+    override fun onPause() {
+        super.onPause()
+        backPressHandler?.selectFragment(null)
+        Log.d("_CALLED_", "BACKPRESS SET TO NULL")
+
+    }
     override fun onStop() {
         super.onStop()
         viewModel.removeRegistration()
     }
+
+    fun deleteRoom() {
+        viewModel.deleteRoom()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
 }

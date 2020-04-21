@@ -1,4 +1,4 @@
-package tej.mann.login
+package tej.mann.gameroom
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.layout_welcome.*
 import org.koin.android.ext.android.inject
-import tej.mann.gameroom.RoomFragment
+import tej.mann.common.views.showToast
 
 
 class WelcomeFragment : Fragment() {
@@ -29,12 +29,16 @@ class WelcomeFragment : Fragment() {
         button_play_online.setOnClickListener {
             if (auth.currentUser == null) parentFragmentManager.beginTransaction()
                 .replace(
-                    tej.mann.gameroom.R.id.container,
+                    R.id.container,
                     LoginFragment()
                 ).addToBackStack(null).commit()
-            else parentFragmentManager.beginTransaction().replace(tej.mann.gameroom.R.id.container, RoomFragment())
+            else parentFragmentManager.beginTransaction().replace(R.id.container, RoomFragment())
                 .addToBackStack(null).commit()
 
+        }
+
+        button_play_computer.setOnClickListener {
+            showToast(getString(R.string.play_computer_feature_soon))
         }
     }
 }

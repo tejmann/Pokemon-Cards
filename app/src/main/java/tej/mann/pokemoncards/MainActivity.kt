@@ -1,12 +1,14 @@
 package tej.mann.pokemoncards
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tej.mann.gameroom.BackPressHandler
 import tej.mann.gameroom.GameFragment
-import tej.mann.login.WelcomeFragment
+import tej.mann.gameroom.RoomFragment
+import tej.mann.gameroom.WelcomeFragment
 
 
 class MainActivity : AppCompatActivity(), BackPressHandler {
@@ -31,34 +33,48 @@ class MainActivity : AppCompatActivity(), BackPressHandler {
     }
 
     override fun onBackPressed() {
-        if (selectedFragment is GameFragment) {
-            MaterialAlertDialogBuilder(this, R.style.Theme_MaterialComponents_Dialog_Alert)
-                .setTitle("Do you want to exit the game?")
-                .setPositiveButton(android.R.string.ok) { dialog, _ ->
-                    dialog.dismiss()
-                    supportFragmentManager.beginTransaction()
-                        .replace(
-                            R.id.container,
-                            WelcomeFragment()
-                        ).commit()
-                }
-                .setNegativeButton(android.R.string.no) { dialog, _ ->
-                    dialog.dismiss()
-                }
-                .create()
-                .show()
-        } else {
-            super.onBackPressed()
+        when (selectedFragment) {
+            is GameFragment -> {
+                MaterialAlertDialogBuilder(this, R.style.Theme_MaterialComponents_Light_Dialog_Alert)
+                    .setTitle(getString(R.string.exit_game))
+                    .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                        dialog.dismiss()
+                        supportFragmentManager.beginTransaction()
+                            .replace(
+                                R.id.container,
+                                WelcomeFragment()
+                            ).commit()
+                    }
+                    .setNegativeButton(android.R.string.no) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create()
+                    .show()
+            }
+            is RoomFragment -> {
+                MaterialAlertDialogBuilder(this, R.style.Theme_MaterialComponents_Light_BottomSheetDialog)
+                    .setTitle(R.string.exit_room)
+                    .setMessage(R.string.delete_room)
+                    .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                        dialog.dismiss()
+                        (selectedFragment as? RoomFragment)?.deleteRoom()
+                        super.onBackPressed()
+                    }
+                    .setNegativeButton(android.R.string.no) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create()
+                    .show()
+            }
+            else -> {
+                super.onBackPressed()
+            }
         }
     }
 
-//    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-//        super.onSaveInstanceState(outState, outPersistentState)
-//        supportFragmentManager.putFragment(outState, "fragment", GameFragment())
-//    }
-
     override fun selectFragment(fragment: Fragment?) {
         selectedFragment = fragment
+        Log.d("_CALLED_MAIN", "$selectedFragment")
     }
 
 

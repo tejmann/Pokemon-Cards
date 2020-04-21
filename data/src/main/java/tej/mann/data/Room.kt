@@ -7,5 +7,6 @@ data class Room(
 
 enum class Status {
     EMPTY,
-    IN_PLAY
+    IN_PLAY,
+    DELETE
 }

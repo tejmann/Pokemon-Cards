@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.layout_collection.*
@@ -40,6 +41,11 @@ class CollectionFragment : Fragment() {
             recyclerViewAdapter.data = it
         })
 
+        sign_out.setOnClickListener {
+            viewModel.signOut()
+            parentFragmentManager.popBackStack(RoomFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            parentFragmentManager.beginTransaction().replace(R.id.container, LoginFragment()).commit()
+        }
     }
 
     override fun onStart() {

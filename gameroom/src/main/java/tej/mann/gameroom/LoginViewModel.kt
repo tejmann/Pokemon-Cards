@@ -1,4 +1,4 @@
-package tej.mann.login
+package tej.mann.gameroom
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -34,6 +34,9 @@ class LoginViewModel(
 
     private var _signUpResult = MutableLiveData<FirebaseUser>()
     fun signUpResult(): LiveData<FirebaseUser> = _signUpResult
+
+    private var _forgotPassword= MutableLiveData<String>()
+    fun forgotPassword(): LiveData<String> = _forgotPassword
 
     private var _toast = MutableLiveData<String>()
     fun toast(): LiveData<String> = _toast
@@ -73,7 +76,7 @@ class LoginViewModel(
     fun forgotPassword(email: String) {
         auth.sendPasswordResetEmail(email).addOnCompleteListener {
             if (it.isSuccessful) {
-                _toast.postValue("EMAIL SENT YO")
+                _forgotPassword.postValue(email)
             }
             else {
                 _toast.postValue(it.exception?.message)

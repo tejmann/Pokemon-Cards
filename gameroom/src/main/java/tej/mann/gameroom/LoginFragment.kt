@@ -1,4 +1,4 @@
-package tej.mann.login
+package tej.mann.gameroom
 
 import android.os.Bundle
 import android.text.Editable
@@ -12,8 +12,6 @@ import kotlinx.android.synthetic.main.login_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tej.mann.common.views.LoginButton
 import tej.mann.common.views.showToast
-import tej.mann.gameroom.RoomFragment
-import tej.mann.login.di.SignupFragment
 
 class LoginFragment : Fragment() {
 
@@ -41,7 +39,8 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         computer_button.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.container, SignupFragment())
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.container, SignupFragment.newInstance(LoginViewModel.SIGN_UP))
                 .addToBackStack(null).commit()
         }
 
@@ -53,7 +52,8 @@ class LoginFragment : Fragment() {
         }
 
         forgot_password_button.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.container, SignupFragment())
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.container, SignupFragment.newInstance(LoginViewModel.FORGOT_PASSWORD))
                 .addToBackStack(null).commit()
         }
 

@@ -1,7 +1,7 @@
 package tej.mann.pokemoncards.di
 
+import tej.mann.gameroom.di.loginModule
 import tej.mann.gameroom.di.roomModule
-import tej.mann.login.di.loginModule
 import tej.mann.pokemon.di.viewModelModule
 import tej.mann.repository.di.createNetworkModule
 

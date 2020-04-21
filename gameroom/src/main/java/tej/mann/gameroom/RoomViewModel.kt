@@ -116,6 +116,17 @@ class RoomViewModel(
         }
     }
 
+    fun deleteRoom() {
+        auth.currentUser?.email?.let{email ->
+            val doc = database.collection("rooms").document(email)
+            database.runTransaction {
+                it.update(doc, "status", Status.DELETE)
+            }
+        }
+
+
+    }
+
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
 }

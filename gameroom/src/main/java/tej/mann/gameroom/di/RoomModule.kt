@@ -4,10 +4,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import tej.mann.gameroom.CollectionViewModel
-import tej.mann.gameroom.EndGameViewModel
-import tej.mann.gameroom.GameViewModel
-import tej.mann.gameroom.RoomViewModel
+import tej.mann.gameroom.*
 
 val roomModule = module {
     single {
@@ -24,5 +21,11 @@ val roomModule = module {
     }
     viewModel {
         EndGameViewModel(get(), get(), get())
+    }
+}
+
+val loginModule = module {
+    viewModel {
+        LoginViewModel(get(), get(), get())
     }
 }

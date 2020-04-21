@@ -24,5 +24,12 @@
     <string name="won_pokemon">You sir are the greatest pokemon trainer, I salute you</string>
     <string name="return_room">Return to game room</string>
     <string name="pokemon_added">A new Pokemon has been added to your collection</string>
+    <string name="email_sent">Password reset email sent to %1$s</string>
+    <string name="exit_game">Do you want to exit the game?</string>
+    <string name="exit_room">Do you want to exit the online room?</string>
+    <string name="delete_room">Any rooms you created will be deleted.</string>
+    <string name="play_computer_feature_soon">Feature coming soon…</string>
+
+
 
 </resources>
