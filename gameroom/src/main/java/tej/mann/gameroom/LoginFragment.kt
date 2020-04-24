@@ -44,7 +44,7 @@ class LoginFragment : Fragment() {
                 .addToBackStack(null).commit()
         }
 
-        main_login_button.updateOnClickListener {
+        main_login_button.setOnClickListener {
             val email = login_email.editText?.text.toString()
             val password = login_password.editText?.text.toString()
             viewModel.signIn(email, password)
@@ -101,7 +101,7 @@ class LoginFragment : Fragment() {
         login_email_edittext.removeTextChangedListener(textWatcher)
         login_password_edittext.removeTextChangedListener(textWatcher)
 
-        main_login_button.updateOnClickListener(null)
+        main_login_button.setOnClickListener(null)
     }
 
 }

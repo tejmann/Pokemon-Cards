@@ -51,7 +51,7 @@ class SignupFragment : Fragment() {
                 forgot_password_page.visibility = View.VISIBLE
                 forgot_password_email_edittext.addTextChangedListener(forgotPasswordTextWatcher)
 
-                forgot_password_page_button.updateOnClickListener {
+                forgot_password_page_button.setOnClickListener {
                     val email = forgot_password_email.editText?.text.toString()
                     viewModel.forgotPassword(email)
                 }
@@ -65,7 +65,7 @@ class SignupFragment : Fragment() {
 
                 setupSignUpInputField()
 
-                signup_form_button.updateOnClickListener {
+                signup_form_button.setOnClickListener {
                     val email = signup_email.editText?.text.toString()
                     val password = signup_password.editText?.text.toString()
                     viewModel.signUp(email, password)
@@ -147,12 +147,12 @@ class SignupFragment : Fragment() {
         arguments?.getString(KEY_ACTION)?.let {
             if (it == LoginViewModel.FORGOT_PASSWORD) {
                 forgot_password_email_edittext.removeTextChangedListener(textWatcher)
-                forgot_password_page_button.updateOnClickListener(null)
+                forgot_password_page_button.setOnClickListener(null)
             } else {
                 signup_email_edittext.removeTextChangedListener(textWatcher)
                 signup_confirm_password_edit_text.removeTextChangedListener(textWatcher)
                 signup_password_edit_text.removeTextChangedListener(textWatcher)
-                signup_form_button.updateOnClickListener(null)
+                signup_form_button.setOnClickListener(null)
             }
         }
     }

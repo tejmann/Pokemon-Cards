@@ -10,9 +10,7 @@ import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import tej.mann.data.Pokemon
-import tej.mann.data.Sprite
-import tej.mann.data.Stat
+import tej.mann.data.*
 import tej.mann.repository.PokemonRepository
 import kotlin.coroutines.CoroutineContext
 

@@ -7,9 +7,6 @@ import org.koin.dsl.module
 import tej.mann.gameroom.*
 
 val roomModule = module {
-    single {
-        Firebase.firestore
-    }
     viewModel {
         RoomViewModel(get(), get())
     }

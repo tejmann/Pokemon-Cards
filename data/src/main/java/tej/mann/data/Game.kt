@@ -1,7 +1,6 @@
-package tej.mann.gameroom
+package tej.mann.data
 
 import com.google.firebase.firestore.PropertyName
-import tej.mann.data.Stat
 
 data class Game(
     val creator: String? = null,

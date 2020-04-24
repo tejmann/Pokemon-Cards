@@ -32,16 +32,6 @@ class RecyclerViewAdapter(private val clickListener: ClickListener? = null) :
 
     override fun getItemViewType(position: Int): Int = data[position].type.ordinal
 
-//    override fun onBindViewHolder(holder: RoomViewHolder, position: Int) {
-//        with(holder.itemView){
-//            room_name.text = data[position].name
-//            creator.text = data[position].status.toString()
-//            setOnClickListener{
-//                clickListener?.onClick(room_name.text.toString())
-//            }
-//        }
-//    }
-
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         holder.bind(data[position])
     }
