@@ -1,5 +1,8 @@
 package tej.mann.repository.di
 
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Converter
@@ -29,7 +32,15 @@ fun createNetworkModule(baseUrl: String) = module {
         get<Retrofit>().create()
     }
 
-    single<PokemonRepository>{
+    single<PokemonRepository> {
         PokemonRepositoryImpl(get())
+    }
+
+    single<FirebaseAuth> {
+        FirebaseAuth.getInstance()
+    }
+
+    single {
+        Firebase.firestore
     }
 }

@@ -13,6 +13,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokemonFragment: Fragment(){
     private val viewModel: PokemonViewModel by viewModel()
+    companion object{
+        const val S = 3
+    }
 
     override fun onStart() {
         super.onStart()
@@ -37,7 +40,7 @@ class PokemonFragment: Fragment(){
             stat1.text = pokemon.stats[0].stat.name
             stat2.text = pokemon.stats[1].stat.name
             stat3.text = pokemon.stats[2].stat.name
-            stat4.text = pokemon.stats[3].stat.name
+            stat4.text = pokemon.stats[S].stat.name
         })
     }
 }

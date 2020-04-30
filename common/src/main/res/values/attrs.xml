@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LoginButton">
+        <attr name="loginButtonState"/>
+        <attr name="loginButtonText" format="string" />
+    </declare-styleable>
+    <attr name="loginButtonState" format="enum">
+        <enum name="enabled" value="0" />
+        <enum name="loading" value="1" />
+        <enum name="disabled" value="2" />
+    </attr>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="khakhi">#f0c775</color>
+    <color name="darkGreen">#006241</color>
+    <color name="transparent">#00000000</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="grey">#40ffffff</color>
+    <color name="pokeball_red">#ee1515</color>
+    <color name="pokeball_white">#f0f0f0</color>
+    <color name="fire">#ED4009</color>
+    <color name="water">#089EE1</color>
+    <color name="grass">#019007</color>
+    <color name="yellow">#FFCB05</color>
+    <color name="blue">#3D7DCA</color>
+    <color name="navy_blue">#003A70</color>
+    <color name="cement">#202020</color>
+
+</resources>

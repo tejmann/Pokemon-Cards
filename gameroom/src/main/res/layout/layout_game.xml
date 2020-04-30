@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp">
+
+    <TextView
+        android:id="@+id/player_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="player1"
+        android:fontFamily="@font/pokemonsolid"/>
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="@string/pokemon"
+        app:layout_constraintBottom_toTopOf="@id/turn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/bulbasor" />
+
+    <TextView
+        android:id="@+id/my_score"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/pokemon_name"
+        app:layout_constraintEnd_toStartOf="@id/turn"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        tools:text="000000" />
+
+    <TextView
+        android:id="@+id/turn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/pokemon_name"
+        app:layout_constraintEnd_toStartOf="@id/opponents_score"
+        app:layout_constraintStart_toEndOf="@id/my_score"
+        tools:text="your turn" />
+
+    <TextView
+        android:id="@+id/opponents_score"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/pokemon_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/turn"
+        tools:text="000000"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/stat3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_stats"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/stat4"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="STAT3 = 13" />
+
+    <TextView
+        android:id="@+id/stat4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_stats"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/stat3"
+        tools:text="STAT4" />
+
+    <TextView
+        android:id="@+id/stat1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/background_stats"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/stat3"
+        app:layout_constraintEnd_toStartOf="@id/stat2"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="STAT1" />
+
+    <TextView
+        android:id="@+id/stat2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/background_stats"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/stat4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/stat1"
+        tools:text="STAT2" />
+
+    <TextView
+        android:id="@+id/pokemon_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/stat1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="NAME" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

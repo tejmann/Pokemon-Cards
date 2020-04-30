@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="87b7b668-a0a3-49aa-8d62-b6aa2a21eaf4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/tej/mann/pokemoncards/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/tej/mann/pokemoncards/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/tej/mann/pokemoncards/di/appComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/tej/mann/pokemoncards/di/appComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../common/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../common/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../data/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/src/main/java/tej/mann/data/Pokemon.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../data/src/main/java/tej/mann/data/Pokemon.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/src/main/java/tej/mann/data/Room.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../data/src/main/java/tej/mann/data/Room.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/CollectionFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/CollectionFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/EndGameViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/EndGameViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/RoomFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/RoomFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/RoomViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/RoomViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/di/RoomModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/di/RoomModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/InviteFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/LoginFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/LoginViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/LoginViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/WelcomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/WelcomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/di/SignupFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/java/tej/mann/gameroom/SignupFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/di/loginModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/tej/mann/login/di/loginModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/res/layout/layout_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/res/layout/layout_signup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/res/layout/layout_welcome.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/res/layout/layout_welcome.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/res/layout/login_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gameroom/src/main/res/layout/login_main.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1aPLoQLjok8EUG6qLP5TJo1GjAn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="index.js" />
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.deploy">
+    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="lint" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.lint" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="87b7b668-a0a3-49aa-8d62-b6aa2a21eaf4" name="Default Changelist" comment="" />
+      <created>1586632457115</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586632457115</updated>
+      <workItem from="1586632459526" duration="41347000" />
+      <workItem from="1587347222697" duration="955000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="81" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586851652781">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="81" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1586851652781" />
+    <state x="184" y="97" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.825@0.23.1440.825" timestamp="1586632602279" />
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1587071454905">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586880172973" />
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1587071454905" />
+    <state width="1419" height="245" key="GridCell.Tab.0.center" timestamp="1587071454900">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586880172972" />
+    <state width="1419" height="245" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1587071454900" />
+    <state width="1419" height="245" key="GridCell.Tab.0.left" timestamp="1587071454898">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586880172971" />
+    <state width="1419" height="245" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1587071454898" />
+    <state width="1419" height="245" key="GridCell.Tab.0.right" timestamp="1587071454902">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586880172973" />
+    <state width="1419" height="245" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1587071454902" />
+    <state x="516" y="191" key="VcsDiffUtil.ChangesDialog" timestamp="1586874657558">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="516" y="191" key="VcsDiffUtil.ChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1586874657557" />
+    <state x="385" y="198" key="run.anything.popup" timestamp="1586632571323">
+      <screen x="0" y="23" width="1440" height="825" />
+    </state>
+    <state x="385" y="198" key="run.anything.popup/0.23.1440.825@0.23.1440.825" timestamp="1586632571323" />
+  </component>
+</project>
