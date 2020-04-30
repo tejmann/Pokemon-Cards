@@ -1,11 +1,8 @@
 rootProject.name='Pokemon Cards'
 include ':app'
-include ':buildSrc'
-include ':pokemon'
 include ':common'
 include ':remote'
 include ':data'
 include ':repository'
-include ':login'
 include ':gameroom'
-include ':firebase'
+
