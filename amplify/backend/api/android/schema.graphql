@@ -1,6 +1,0 @@
-type PokeMaster @model {
-  id: ID!
-  name: String!
-  description: String
-  score: Int!
-}
