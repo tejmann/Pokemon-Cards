@@ -12,6 +12,7 @@
     <string name="play_computer">Play Computer</string>
     <string name="invite">Invite Player</string>
     <string name="name">Name</string>
+    <string name="welcome">Welcome %1$s</string>
     <string name="pokemon">Pokemon</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="create_room">Create Room</string>
@@ -29,6 +30,7 @@
     <string name="exit_room">Do you want to exit the online room?</string>
     <string name="delete_room">Any rooms you created will be deleted.</string>
     <string name="play_computer_feature_soon">Feature coming soon…</string>
+    <string name="no_internet">Can\'t fight! No Internet available.</string>
 
 
 

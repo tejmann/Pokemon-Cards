@@ -26,7 +26,7 @@ class RoomFragment : Fragment(), ClickListener {
 
     private var backPressHandler: BackPressHandler? = null
 
-    companion object{
+    companion object {
         const val TAG = "room"
     }
 
@@ -90,23 +90,14 @@ class RoomFragment : Fragment(), ClickListener {
         viewModel.joinRoom(s)
     }
 
-    override fun onPause() {
-        super.onPause()
-        backPressHandler?.selectFragment(null)
-        Log.d("_CALLED_", "BACKPRESS SET TO NULL")
-
-    }
     override fun onStop() {
         super.onStop()
         viewModel.removeRegistration()
+        backPressHandler?.selectFragment(null)
     }
 
     fun deleteRoom() {
         viewModel.deleteRoom()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
 }

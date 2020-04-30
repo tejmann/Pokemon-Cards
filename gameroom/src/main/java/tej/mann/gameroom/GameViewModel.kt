@@ -10,7 +10,10 @@ import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import tej.mann.data.*
+import tej.mann.data.Stat
+import tej.mann.data.Draw
+import tej.mann.data.Game
+import tej.mann.data.Pokemon
 import tej.mann.repository.PokemonRepository
 import kotlin.coroutines.CoroutineContext
 
@@ -55,7 +58,7 @@ class GameViewModel(
     val oppScore: LiveData<String> = _oppScore
 
     private val _winner: MutableLiveData<String> = MutableLiveData()
-    fun winner(): LiveData<String> = _winner
+    val winner: LiveData<String> = _winner
 
 
 
@@ -168,13 +171,7 @@ class GameViewModel(
     fun fetchPokemon() {
         launch() {
             val result = pokemonRepository.fetchPokemon()
-            if (result != null) _pokemon.postValue(result) else _pokemon.postValue(
-                Pokemon(
-                    "ERROR",
-                    listOf(),
-                    Sprite("error")
-                )
-            )
+            if (result != null) _pokemon.postValue(result)
         }
     }
 

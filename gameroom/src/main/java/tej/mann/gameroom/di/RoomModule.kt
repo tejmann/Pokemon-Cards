@@ -1,10 +1,13 @@
 package tej.mann.gameroom.di
 
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import tej.mann.gameroom.GameEndViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import tej.mann.gameroom.*
+import tej.mann.gameroom.LoginViewModel
+import tej.mann.gameroom.CollectionViewModel
+import tej.mann.gameroom.GameViewModel
+import tej.mann.gameroom.RoomViewModel
+
 
 val roomModule = module {
     viewModel {
@@ -17,7 +20,7 @@ val roomModule = module {
         CollectionViewModel(get(), get())
     }
     viewModel {
-        EndGameViewModel(get(), get(), get())
+        GameEndViewModel(get(), get(), get())
     }
 }
 

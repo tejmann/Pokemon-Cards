@@ -10,14 +10,24 @@ import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import tej.mann.data.Path
 import tej.mann.data.Room
 import tej.mann.data.Status
 import kotlin.coroutines.CoroutineContext
 
 class RoomViewModel(
-    private val auth: FirebaseAuth, private val database: FirebaseFirestore
+    auth: FirebaseAuth, private val database: FirebaseFirestore
 ) : ViewModel(),
     CoroutineScope {
+
+    companion object {
+        const val TAG = "room_view_model"
+        const val FIELD_NAME = "name"
+        const val FIELD_STATUS = "status"
+        const val FIELD_JOINER = "joiner"
+    }
+
+    private val email = auth.currentUser?.email
 
     private val _joined: MutableLiveData<Pair<Boolean, String>> = MutableLiveData()
     fun joined(): LiveData<Pair<Boolean, String>> = _joined
@@ -32,9 +42,6 @@ class RoomViewModel(
     var roomRegistration: ListenerRegistration? = null
     var creatorRegistration: ListenerRegistration? = null
 
-    private var playerId: String? = null
-    private var otherPlayer: String? = null
-
     private var gamePath: String? = null
 
     fun removeRegistration() {
@@ -45,33 +52,31 @@ class RoomViewModel(
 
 
     fun createRoom() {
-        val email = auth.currentUser?.email ?: "null"
-        val room = Room(
-            email,
-            Status.EMPTY
-        )
+        email?.let {
+            val room = Room(
+                it,
+                Status.EMPTY
+            )
 
-        val ref = database.collection("rooms")
-            .whereEqualTo("name", email)
-            .get()
+            val ref = database.collection(Path.COLLECTION_PATH_ROOMS)
+                .whereEqualTo(FIELD_NAME, email)
+                .get()
 
-        ref.addOnSuccessListener { querySnapshot ->
-            if (querySnapshot.isEmpty) {
-                val roomRef = database.collection("rooms").document(email)
-                roomRef.set(room)
-                roomRegistration = roomRef.addSnapshotListener { snapshot, e ->
-                    if (e != null) {
-                        Log.d("_CALLED_", e.toString())
-                    } else {
-                        if (snapshot != null) {
-                            val path = snapshot.data?.get("game_path")
-                            if (path != null) {
-                                playerId = "player_1"
-                                otherPlayer = "player_2"
-                                _joined.postValue(Pair(true, path.toString()))
-                                gamePath = path.toString()
+            ref.addOnSuccessListener { querySnapshot ->
+                if (querySnapshot.isEmpty) {
+                    val roomRef = database.collection(Path.COLLECTION_PATH_ROOMS).document(it)
+                    roomRef.set(room)
+                    roomRegistration = roomRef.addSnapshotListener { snapshot, e ->
+                        if (e != null) {
+                            Log.d(TAG, e.toString())
+                        } else {
+                            if (snapshot != null) {
+                                val path = snapshot.data?.get(Path.DOCUMENT_PATH_GAME)
+                                if (path != null) {
+                                    _joined.postValue(Pair(true, path.toString()))
+                                    gamePath = path.toString()
+                                }
                             }
-
                         }
                     }
                 }
@@ -81,50 +86,53 @@ class RoomViewModel(
 
 
     fun checkAvailableRooms() {
-        registration = database.collection("rooms").whereEqualTo("status", Status.EMPTY)
-            .addSnapshotListener { snapshot, e ->
-                if (e != null) {
-                    Log.d("_CALLED_E", e.toString())
-                    return@addSnapshotListener
-                }
-                if (snapshot != null) {
-                    val rooms = mutableListOf<Room>()
-                    for (doc in snapshot) {
-                        val room = doc.toObject<Room>()
-                        rooms.add(room)
+        registration =
+            database.collection(Path.COLLECTION_PATH_ROOMS).whereEqualTo(FIELD_STATUS, Status.EMPTY)
+                .addSnapshotListener { snapshot, e ->
+                    if (e != null) {
+                        Log.d(TAG, e.toString())
+                        return@addSnapshotListener
                     }
-                    _emptyRooms.postValue(rooms)
-                }
+                    if (snapshot != null) {
+                        val rooms = mutableListOf<Room>()
+                        for (doc in snapshot) {
+                            val room = doc.toObject<Room>()
+                            rooms.add(room)
+                        }
+                        _emptyRooms.postValue(rooms)
+                    }
 
-            }
+                }
     }
 
     fun joinRoom(creator: String) {
-        if (creator == auth.currentUser?.email) {
-            return
-        }
-        val doc = database.collection("rooms").document(creator)
-        database.runTransaction {
-            it.update(doc, "joiner", auth.currentUser?.email)
-        }.addOnSuccessListener {
-            creatorRegistration = doc.addSnapshotListener { snapshot, e ->
-                val path = snapshot?.get("game_path")
-                if (path != null) {
-                    _created.postValue(Pair(true, path.toString()))
+        email?.let {
+            if (creator == it) {
+                return
+            }
+            val doc = database.collection(Path.COLLECTION_PATH_ROOMS).document(creator)
+            database.runTransaction { transaction ->
+                transaction.update(doc, FIELD_JOINER, it)
+            }.addOnSuccessListener {
+                creatorRegistration = doc.addSnapshotListener { snapshot, _ ->
+                    val path = snapshot?.get(Path.DOCUMENT_PATH_GAME)
+
+                    if (path != null) {
+                        _created.postValue(Pair(true, path.toString()))
+                    }
                 }
             }
+
         }
     }
 
     fun deleteRoom() {
-        auth.currentUser?.email?.let{email ->
-            val doc = database.collection("rooms").document(email)
-            database.runTransaction {
-                it.update(doc, "status", Status.DELETE)
+        email?.let {
+            val doc = database.collection(Path.COLLECTION_PATH_ROOMS).document(it)
+            database.runTransaction { transaction ->
+                transaction.update(doc, FIELD_STATUS, Status.DELETE)
             }
         }
-
-
     }
 
     override val coroutineContext: CoroutineContext

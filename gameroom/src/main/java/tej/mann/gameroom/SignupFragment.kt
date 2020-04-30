@@ -96,10 +96,6 @@ class SignupFragment : Fragment() {
     }
 
     private fun correctPassword(): Boolean {
-        Log.d(
-            "_CALLED_EDIT",
-            "${signup_confirm_password.editText?.text} vs ${signup_password.editText?.text}"
-        )
         return signup_confirm_password.editText?.text.toString() == signup_password.editText?.text.toString()
     }
 

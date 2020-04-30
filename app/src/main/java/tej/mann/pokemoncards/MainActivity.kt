@@ -1,10 +1,14 @@
 package tej.mann.pokemoncards
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.android.synthetic.main.activity_main.*
 import tej.mann.gameroom.BackPressHandler
 import tej.mann.gameroom.GameFragment
 import tej.mann.gameroom.RoomFragment
@@ -19,23 +23,27 @@ class MainActivity : AppCompatActivity(), BackPressHandler {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        savedInstanceState?.let {
-//            supportFragmentManager.getFragment(savedInstanceState, "fragment")
-//            return
-//        }
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction().add(
+        if (isNetworkConnected()) {
+            if (savedInstanceState == null) {
+                supportFragmentManager.beginTransaction().add(
                     R.id.container,
                     WelcomeFragment()
-                )
-                .commit()
+                ).commit()
+            }
+        } else {
+            container.visibility = View.INVISIBLE
+            no_internet.visibility = View.VISIBLE
         }
+
     }
 
     override fun onBackPressed() {
         when (selectedFragment) {
             is GameFragment -> {
-                MaterialAlertDialogBuilder(this, R.style.Theme_MaterialComponents_Light_Dialog_Alert)
+                MaterialAlertDialogBuilder(
+                    this,
+                    R.style.Theme_MaterialComponents_Light_Dialog_Alert
+                )
                     .setTitle(getString(R.string.exit_game))
                     .setPositiveButton(android.R.string.ok) { dialog, _ ->
                         dialog.dismiss()
@@ -52,7 +60,10 @@ class MainActivity : AppCompatActivity(), BackPressHandler {
                     .show()
             }
             is RoomFragment -> {
-                MaterialAlertDialogBuilder(this, R.style.Theme_MaterialComponents_Light_BottomSheetDialog)
+                MaterialAlertDialogBuilder(
+                    this,
+                    R.style.Theme_MaterialComponents_Light_BottomSheetDialog
+                )
                     .setTitle(R.string.exit_room)
                     .setMessage(R.string.delete_room)
                     .setPositiveButton(android.R.string.ok) { dialog, _ ->
@@ -77,5 +88,8 @@ class MainActivity : AppCompatActivity(), BackPressHandler {
         Log.d("_CALLED_MAIN", "$selectedFragment")
     }
 
+    private fun isNetworkConnected() =
+        (getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager)?.activeNetworkInfo?.isConnectedOrConnecting
+            ?: false
 
 }

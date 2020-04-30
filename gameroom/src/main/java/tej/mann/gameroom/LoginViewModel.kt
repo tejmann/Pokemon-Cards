@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import tej.mann.data.Path
 import tej.mann.data.PokemonList
 import tej.mann.repository.PokemonRepository
 import kotlin.coroutines.CoroutineContext
@@ -27,6 +28,7 @@ class LoginViewModel(
     companion object{
         const val FORGOT_PASSWORD = "forgot_password"
         const val SIGN_UP = "sign_up"
+        const val TAG = "login_view_model"
     }
 
     private var _signInResult = MutableLiveData<FirebaseUser>()
@@ -48,7 +50,7 @@ class LoginViewModel(
                 fetchPokemon(email)
 
             } else {
-                Log.d("_CALLED_FAILED_SIGNUP", "${it.exception}")
+                Log.d(TAG, "${it.exception}")
                 _toast.postValue(it.exception?.message)
             }
         }
@@ -68,7 +70,7 @@ class LoginViewModel(
         launch() {
             pokemonRepository.fetchPokemon()?.let {
                 val list = PokemonList(listOf(it))
-                database.collection("users").document(name).set(list)
+                database.collection(Path.COLLECTION_PATH_USERS).document(name).set(list)
             }
         }
     }

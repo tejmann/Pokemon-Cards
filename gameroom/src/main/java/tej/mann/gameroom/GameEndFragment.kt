@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.layout_win.*
+import kotlinx.coroutines.processNextEventInCurrentThread
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tej.mann.common.views.showToast
 
 class GameEndFragment : Fragment() {
 
 
-    private val viewModel: EndGameViewModel by viewModel()
+    private val viewModel: GameEndViewModel by viewModel()
 
     companion object {
         const val KEY_ANSWER = "answer"
