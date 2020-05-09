@@ -4,10 +4,10 @@ Pokemon Cards is an easy to play trading-card game for pokemon aficionados who c
 In this app you’ll find : 
 - The [Model-View-ViewModel (MVVM) Pattern](https://medium.com/upday-devs/android-architecture-patterns-part-3-model-view-viewmodel-e7eeee76b73b).
 - Kotlin [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) for background operations.
+- [Koin](https://insert-koin.io/) used for Dependency Injection.
 - A single activity architecture.
 - Reactive UIs using [LiveData](https://developer.android.com/topic/libraries/architecture/livedata).
 - A custom **RecyclerView Adapter** to work with any viewholder. 
-- [Koin](https://insert-koin.io/) used for Dependency Injection.
 - Google Firebase to store users and their data.
 - Cloud Functions for Firebase is used for backend operations. 
 
