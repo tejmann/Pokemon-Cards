@@ -14,7 +14,9 @@ The pokemon related data is derived from [Pokeapi](https://pokeapi.co/).
 
 ## How to get it running and gameplay:
 Clone the GitHub repository and build the project using Android Studio. This project is for Android API 21+. 
-Once the app is installed, select play online and signup using your email. Next, you reach the waiting lobby where you can either create your game-room or join someone else’s. If you create your own room, you have to wait for some other player to join it.
+Once the app is installed, select play online and signup using your email.
+
+Next, you reach the waiting lobby where you can either create your game-room or join someone else’s. If you create your own room, you have to wait for some other player to join it.
 
 Once another player has joined the room, the game starts. Both players get 20 random cards and the winner is decided after all 20 cards are played. The winners get a new card added to their collection.
 
