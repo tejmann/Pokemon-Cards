@@ -64,7 +64,7 @@ class LoginFragment : Fragment() {
 
         viewModel.signInResult().observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                showToast(getString(R.string.welcome, it.displayName))
+                showToast(getString(R.string.welcome, it.email))
                 main_login_button.buttonState = LoginButton.LoginButtonState.DISABLED
                 parentFragmentManager.beginTransaction().replace(R.id.container, RoomFragment())
                     .commit()
