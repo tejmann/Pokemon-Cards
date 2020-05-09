@@ -18,8 +18,8 @@ Once the app is installed, select play online and signup using your email. Next,
 
 Once another player has joined the room, the game starts. Both players get 20 random cards and the winner is decided after all 20 cards are played. The winners get a new card added to their collection.
 
-Features to come:
-- The following are in the works or currently planned:
+## Features to come:
+The following are in the works or currently planned:
 - Playing against the computer.
 - Setting up FCM push notifications to improve the room joining flow. 
 - Chat messaging inside the game.
