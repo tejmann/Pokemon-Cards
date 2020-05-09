@@ -2,9 +2,9 @@
 Pokemon Cards is an easy to play trading-card game for pokemon aficionados who can compete against other players online to collect all the pokemon cards.
 
 In this app you’ll find : 
+- The [Model-View-ViewModel (MVVM) Pattern](https://medium.com/upday-devs/android-architecture-patterns-part-3-model-view-viewmodel-e7eeee76b73b).
 - Kotlin [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) for background operations.
 - A single activity architecture.
-- The [Model-View-ViewModel (MVVM) Pattern](https://medium.com/upday-devs/android-architecture-patterns-part-3-model-view-viewmodel-e7eeee76b73b).
 - Reactive UIs using [LiveData](https://developer.android.com/topic/libraries/architecture/livedata).
 - [Koin](https://insert-koin.io/) used for Dependency Injection.
 - Google Firebase to store users and their data.
