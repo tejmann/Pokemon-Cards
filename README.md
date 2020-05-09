@@ -6,6 +6,7 @@ In this app you’ll find :
 - Kotlin [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) for background operations.
 - A single activity architecture.
 - Reactive UIs using [LiveData](https://developer.android.com/topic/libraries/architecture/livedata).
+- A custom **RecyclerView Adapter** to work with any viewholder. 
 - [Koin](https://insert-koin.io/) used for Dependency Injection.
 - Google Firebase to store users and their data.
 - Cloud Functions for Firebase is used for backend operations. 
