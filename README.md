@@ -8,8 +8,8 @@ In this app you’ll find :
 - A single activity architecture.
 - Reactive UIs using [LiveData](https://developer.android.com/topic/libraries/architecture/livedata).
 - A custom **RecyclerView Adapter** to work with any viewholder. 
-- Google Firebase to store users and their data.
-- Cloud Functions for Firebase is used for backend operations. 
+- **Firebase** to store users and their data.
+- **Cloud Functions** for Firebase is used for backend trigger operations. 
 
 The pokemon related data is derived from [Pokeapi](https://pokeapi.co/).
 
