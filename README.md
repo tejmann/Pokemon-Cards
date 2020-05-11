@@ -11,6 +11,7 @@ In this app you’ll find :
 - **Firebase** to store users and their data.
 - **Cloud Functions** for Firebase is used for backend trigger operations. 
 - Animation using the new [Motion Layout](https://developer.android.com/training/constraint-layout/motionlayout)
+- Uses [detekt](https://github.com/detekt/detekt) to avoid code smells.
 
 The pokemon related data is derived from [Pokeapi](https://pokeapi.co/).
 
