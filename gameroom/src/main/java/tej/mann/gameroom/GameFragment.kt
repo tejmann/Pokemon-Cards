@@ -93,7 +93,7 @@ class GameFragment : Fragment() {
 
         viewModel.pokemon.observe(viewLifecycleOwner, Observer { pokemon ->
             pokemon_name.text = pokemon.name
-            Glide.with(this).load(pokemon.sprites.frontDefault).into(imageView2)
+            Glide.with(this).load(pokemon.sprites.frontDefault).placeholder(R.drawable.no_image).into(imageView2)
             setView(stat1, pokemon.stats[0])
             setView(stat2, pokemon.stats[1])
             setView(stat3, pokemon.stats[2])
