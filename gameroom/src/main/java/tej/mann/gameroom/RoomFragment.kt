@@ -43,6 +43,7 @@ class RoomFragment : Fragment(), ClickListener {
         super.onViewCreated(view, savedInstanceState)
         create_room.setOnClickListener {
             viewModel.createRoom()
+            showToast(getString(R.string.wait_room))
         }
 
         cap.setOnClickListener {
@@ -92,8 +93,12 @@ class RoomFragment : Fragment(), ClickListener {
 
     override fun onStop() {
         super.onStop()
-        viewModel.removeRegistration()
         backPressHandler?.selectFragment(null)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.removeRegistration()
     }
 
     fun deleteRoom() {

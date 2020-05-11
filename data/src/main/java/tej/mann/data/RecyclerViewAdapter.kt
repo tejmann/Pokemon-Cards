@@ -71,7 +71,7 @@ class PokemonViewHolder(itemView: View) : BaseViewHolder(itemView) {
         item as Pokemon
         with(itemView) {
             pokemon_name_vh.text = item.name
-            Glide.with(this).load(item.sprites.frontDefault).into(pokemon_vh)
+            Glide.with(this).load(item.sprites.frontDefault).placeholder(R.drawable.no_image).into(pokemon_vh)
         }
 
     }

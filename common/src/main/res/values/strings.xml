@@ -31,6 +31,7 @@
     <string name="delete_room">Any rooms you created will be deleted.</string>
     <string name="play_computer_feature_soon">Feature coming soon…</string>
     <string name="no_internet">Can\'t fight! No Internet available.</string>
+    <string name="wait_room">Waiting for someone to join your room.</string>
 
 
 
