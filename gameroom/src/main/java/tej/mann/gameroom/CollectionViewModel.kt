@@ -6,15 +6,21 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
+import tej.mann.data.Path
 import tej.mann.data.Path.COLLECTION_PATH_USERS
 import tej.mann.data.Pokemon
 import tej.mann.data.PokemonList
+import tej.mann.data.Status
 
 class CollectionViewModel(
     val auth: FirebaseAuth, private val database: FirebaseFirestore
 ) : ViewModel() {
 
     val email = auth.currentUser?.email
+
+    companion object {
+        const val FIELD_STATUS = "status"
+    }
 
     private val pokemon = MutableLiveData<List<Pokemon>>()
     fun pokemon(): LiveData<List<Pokemon>> = pokemon
@@ -31,7 +37,15 @@ class CollectionViewModel(
         }
     }
 
-    fun signOut() {
-        auth.signOut()
+    fun deleteAndSignOut() {
+        email?.let {
+            val doc = database.collection(Path.COLLECTION_PATH_ROOMS).document(it)
+            database.runTransaction { transaction ->
+                transaction.update(doc, FIELD_STATUS, Status.DELETE)
+            }.addOnCompleteListener {
+                auth.signOut()
+            }
+        }
     }
+
 }

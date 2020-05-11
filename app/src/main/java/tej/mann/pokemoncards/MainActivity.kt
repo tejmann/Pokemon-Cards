@@ -85,11 +85,11 @@ class MainActivity : AppCompatActivity(), BackPressHandler {
 
     override fun selectFragment(fragment: Fragment?) {
         selectedFragment = fragment
-        Log.d("_CALLED_MAIN", "$selectedFragment")
     }
 
     private fun isNetworkConnected() =
-        (getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager)?.activeNetworkInfo?.isConnectedOrConnecting
+        (getSystemService(Context.CONNECTIVITY_SERVICE) as?
+                ConnectivityManager)?.activeNetworkInfo?.isConnectedOrConnecting
             ?: false
 
 }

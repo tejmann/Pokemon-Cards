@@ -121,6 +121,7 @@ class RoomViewModel(
                         _created.postValue(Pair(true, path.toString()))
                     }
                 }
+                deleteRoom()
             }
 
         }
