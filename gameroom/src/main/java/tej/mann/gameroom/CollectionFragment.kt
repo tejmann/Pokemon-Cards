@@ -42,7 +42,7 @@ class CollectionFragment : Fragment() {
         })
 
         sign_out.setOnClickListener {
-            viewModel.signOut()
+            viewModel.deleteAndSignOut()
             parentFragmentManager.popBackStack(RoomFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE)
             parentFragmentManager.beginTransaction().replace(R.id.container, LoginFragment()).commit()
         }
