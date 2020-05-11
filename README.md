@@ -15,7 +15,7 @@ In this app you’ll find :
 
 The pokemon related data is derived from [Pokeapi](https://pokeapi.co/).
 
-![login](https://github.com/tejmann/Pokemon-Cards/blob/master/gif/login-new.gif) ![collection](https://github.com/tejmann/Pokemon-Cards/blob/master/gif/collection-new.gif)![gameplay](https://github.com/tejmann/Pokemon-Cards/blob/master/gif/gameplay-new.gif)
+![login](https://github.com/tejmann/Pokemon-Cards/blob/master/gif/login-new.gif)  ![collection](https://github.com/tejmann/Pokemon-Cards/blob/master/gif/collection-new.gif)  ![gameplay](https://github.com/tejmann/Pokemon-Cards/blob/master/gif/gameplay-new.gif)
 
 ## How to get it running and gameplay:
 Clone the GitHub repository and build the project using Android Studio. This project is for Android API 21+. 
