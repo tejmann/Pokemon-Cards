@@ -10,6 +10,7 @@ In this app you’ll find :
 - A custom **RecyclerView Adapter** to work with any viewholder. 
 - **Firebase** to store users and their data.
 - **Cloud Functions** for Firebase is used for backend trigger operations. 
+- Animation using the new [Motion Layout](https://developer.android.com/training/constraint-layout/motionlayout)
 
 The pokemon related data is derived from [Pokeapi](https://pokeapi.co/).
 
